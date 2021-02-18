@@ -13,7 +13,7 @@ class Module(object):
     is_connected = False
 
     serial_receive_delay = 0.01
-    stop_thread = False
+    __stop_thread = False
 
     def __init__(self, serial_no=None):
         ports = list_ports.comports(include_links=True)
@@ -42,7 +42,7 @@ class Module(object):
 
 
     def disconnect(self):
-        self.stop_thread = True
+        self.__stop_thread = True
 
 
     def handle_data(self, data):
@@ -52,16 +52,16 @@ class Module(object):
     def receive(self):
         while not self.is_connected:
             self.is_connected = True
-            self.stop_thread = False
+            self.__stop_thread = False
 
-            while not self.stop_thread:
+            while not self.__stop_thread:
                 data = self.ser.readline().decode()
                 if data:
                     self.handle_data(data)
                 time.sleep(self.serial_receive_delay)
 
         self.is_connected = False
-        self.stop_thread = False
+        self.__stop_thread = False
         self.ser = None
 
 
@@ -77,6 +77,7 @@ class Module(object):
 if __name__ == '__main__':
     m = Module()
 
+    print(m.__stop_thread)
     m.send('Hello world!')
 
     time.sleep(5)
