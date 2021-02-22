@@ -23,7 +23,7 @@ class Timer(object):
                     break
 
                 next_call = next_call + interval
-                time.sleep(next_call - time.time())
+                time.sleep(max(next_call - time.time(), 0))
                 func(*args, **kwargs)
 
         timer_thread = threading.Thread(target=handler)
