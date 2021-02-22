@@ -43,13 +43,15 @@ class Timer(object):
 
 if __name__ == '__main__':
     t1 = Timer()
+    t2 = Timer()
 
     def print_time(a, b):
         print(a, b, datetime.now())
 
     t1.callback_at(func=print_time, args=('AAAAAA',), kwargs={'b': 'bb'}, at='2021-02-19 17:16:30', interval=0.1)
 
-    t1.callback_after(func=print_time, args=('aa',), kwargs={'b': 'bb'}, after=2, interval=0.1)
+    t1.callback_after(func=print_time, args=('t1',), kwargs={'b': 't11'}, after=0.1, interval=0.1)
+    t2.callback_after(func=print_time, args=('t2',), kwargs={'b': 't22'}, after=3, interval=0.1)
 
     time.sleep(5)
 
