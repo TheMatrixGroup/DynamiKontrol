@@ -64,7 +64,7 @@ class Module(object):
 
 
     def handle_data(self, data):
-        print(data)
+        print(data.encode())
 
 
     def receive(self):
@@ -90,8 +90,10 @@ class Module(object):
         if self.port is None:
             raise IOError('Module is not connected!')
 
-        ser = serial.Serial(self.port, self.baud, timeout=0)
-        ser.write(data.encode())
+        if type(data) == str:
+            self.ser.write(data.encode())
+        else:
+            self.ser.write(data)
 
 
 if __name__ == '__main__':
