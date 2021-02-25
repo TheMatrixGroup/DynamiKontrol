@@ -4,11 +4,13 @@ from serial.tools import list_ports
 import threading
 import time
 
+from Protocol import Module2PC
+
 class Module(object):
     serial_no = None
     port = None
     ser = None
-    baud = 9600
+    baud = 921600
     vid = None
     pid = None
     # TODO: our vids and pids
@@ -17,11 +19,16 @@ class Module(object):
 
     is_connected = False
 
-    __serial_receive_delay = 0.01
+    __serial_receive_delay = 1e-04
     __stop_thread = False
+
+    # communication
+    __is_header_defined = False
+    data_queue = bytearray()
 
     def __init__(self, serial_no=None):
         self.serial_no = serial_no
+        self.m2p = Module2PC()
 
         ports = list_ports.comports(include_links=True)
 
@@ -63,8 +70,9 @@ class Module(object):
         self.__stop_thread = True
 
 
-    def handle_data(self, data):
-        print(data)
+    def read_delay(self, size=1):
+        time.sleep(self.__serial_receive_delay)
+        return int.from_bytes(self.ser.read(size), byteorder='little')
 
 
     def receive(self):
@@ -73,10 +81,44 @@ class Module(object):
             self.__stop_thread = False
 
             while not self.__stop_thread:
-                data = self.ser.read(1)
-                if data:
-                    self.handle_data(data)
-                time.sleep(self.__serial_receive_delay)
+                data = self.read_delay()
+
+                if not data:
+                    continue
+
+                if not self.__is_header_defined and data == 0x05:
+                    self.__is_header_defined = True
+                    self.data_queue = bytearray()
+
+                if not self.__is_header_defined:
+                    continue
+
+                # data queue
+                self.data_queue.append(data) # header
+                self.data_queue.append(self.read_delay()) # command
+
+                # data_length
+                data_length = self.read_delay()
+                self.data_queue.append(data_length)
+
+                # data
+                for i in range(data_length):
+                    self.data_queue.append(self.read_delay())
+
+                self.data_queue.append(self.read_delay()) # checksum
+
+                # end
+                end = self.read_delay()
+                self.data_queue.append(end)
+
+                if end != 0x04:
+                    raise ValueError('Module invalid end byte')
+
+                data = self.m2p.decode(self.data_queue)
+
+                print(data)
+
+                self.__is_header_defined = False
 
         self.is_connected = False
         self.__stop_thread = False
@@ -97,10 +139,15 @@ class Module(object):
 
 
 if __name__ == '__main__':
+    from Protocol import PC2Module
+
+    p2m = PC2Module()
+
+    encoded = p2m.set_command(0x03).set_data([0x00, 0x01, 0x02]).encode() # status LED
+
     m = Module()
+    m.send(encoded)
 
-    m.send('Hello world!')
-
-    time.sleep(5)
+    time.sleep(0.1)
 
     m.disconnect()

@@ -23,7 +23,6 @@ class PC2Module(Protocol):
 
     def __init__(self):
         super(PC2Module, self).__init__()
-        pass
 
     def set_command(self, command):
         self.command = command
@@ -54,7 +53,6 @@ class Module2PC(Protocol):
 
     def __init__(self):
         super(Module2PC, self).__init__()
-        pass
 
     def decode(self, byte):
         try:
@@ -74,6 +72,8 @@ class Module2PC(Protocol):
                 raise ValueError('Module2PC unmatched checksum')
         except:
             raise ValueError('Module2PC invalid protocol length')
+
+        return self.data
 
 
 if __name__ == '__main__':
