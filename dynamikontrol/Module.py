@@ -64,7 +64,7 @@ class Module(object):
 
 
     def handle_data(self, data):
-        print(data.encode())
+        print(data)
 
 
     def receive(self):
@@ -73,7 +73,7 @@ class Module(object):
             self.__stop_thread = False
 
             while not self.__stop_thread:
-                data = self.ser.readline().decode()
+                data = self.ser.readline()
                 if data:
                     self.handle_data(data)
                 time.sleep(self.__serial_receive_delay)
