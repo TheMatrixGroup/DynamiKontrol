@@ -1,3 +1,5 @@
 .vscode
 tty_dk_rec
 tty_dk_sen
+__pycache__
+.DS_Store
