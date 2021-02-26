@@ -10,7 +10,7 @@ class Module(object):
     serial_no = None
     port = None
     ser = None
-    baud = 921600
+    baud = 115200
     vid = None
     pid = None
     # TODO: our vids and pids
@@ -19,7 +19,7 @@ class Module(object):
 
     is_connected = False
 
-    __serial_receive_delay = 1e-04
+    __serial_receive_delay = 0
     __stop_thread = False
 
     # communication
@@ -81,44 +81,51 @@ class Module(object):
             self.__stop_thread = False
 
             while not self.__stop_thread:
-                data = self.read_delay()
+                try:
+                    data = self.read_delay()
 
-                if not data:
-                    continue
+                    if not data:
+                        continue
 
-                if not self.__is_header_defined and data == 0x05:
-                    self.__is_header_defined = True
-                    self.data_queue = bytearray()
+                    # TODO: check header field, remove 0x05
+                    if not self.__is_header_defined and (data == 0x05 or data == 0x06 or data == 0x15): # 0x06 ACK, 0x15 NACK
+                        self.__is_header_defined = True
+                        self.data_queue = bytearray()
 
-                if not self.__is_header_defined:
-                    continue
+                    if not self.__is_header_defined:
+                        continue
 
-                # data queue
-                self.data_queue.append(data) # header
-                self.data_queue.append(self.read_delay()) # command
+                    if self.timestamp == 0:
+                        self.timestamp = time.time()
+                        print(self.timestamp)
 
-                # data_length
-                data_length = self.read_delay()
-                self.data_queue.append(data_length)
+                    # data queue
+                    self.data_queue.append(data) # header
+                    self.data_queue.append(self.read_delay()) # command
 
-                # data
-                for i in range(data_length):
-                    self.data_queue.append(self.read_delay())
+                    # data_length
+                    data_length = self.read_delay()
+                    self.data_queue.append(data_length)
 
-                self.data_queue.append(self.read_delay()) # checksum
+                    # data
+                    for i in range(data_length):
+                        self.data_queue.append(self.read_delay())
 
-                # end
-                end = self.read_delay()
-                self.data_queue.append(end)
+                    self.data_queue.append(self.read_delay()) # checksum
 
-                if end != 0x04:
-                    raise ValueError('Module invalid end byte')
+                    # end
+                    end = self.read_delay()
+                    self.data_queue.append(end)
 
-                data = self.m2p.decode(self.data_queue)
+                    if end != 0x04:
+                        self.__is_header_defined = False
+                        raise ValueError('Module invalid end byte')
 
-                print(data)
+                    data = self.m2p.decode(self.data_queue)
 
-                self.__is_header_defined = False
+                    self.__is_header_defined = False
+                except Exception as e:
+                    print(e)
 
         self.is_connected = False
         self.__stop_thread = False
