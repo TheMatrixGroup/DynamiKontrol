@@ -141,7 +141,7 @@ class Module(object):
                     self.__is_header_defined = False
 
                     if self.debug:
-                        print('[*] received %s' % (print_bytearray(self.data_queue),))
+                        print('[*] Recv %s' % (print_bytearray(self.data_queue),))
                 except Exception as e:
                     print(e)
 
