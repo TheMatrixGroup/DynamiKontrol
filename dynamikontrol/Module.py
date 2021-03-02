@@ -5,6 +5,7 @@ import threading
 import time
 
 from dynamikontrol.Protocol import Module2PC, PC2Module
+from dynamikontrol.LED import LED
 
 class Module(object):
     serial_no = None
@@ -61,12 +62,17 @@ class Module(object):
 
         self.connect()
 
+        self.LED = LED(module=self)
+
 
     def connect(self):
         if self.port is None:
             raise IOError('Module is not connected!')
 
         self.ser = serial.Serial(self.port, self.baud, timeout=0)
+
+        if self.debug:
+            print('[*] Connected to %s, baud rate: %d' % (self.port, self.baud))
 
         self.receive_thread = threading.Thread(target=self.receive, args=())
         self.receive_thread.start()
@@ -75,6 +81,8 @@ class Module(object):
 
 
     def disconnect(self):
+        if self.debug:
+            print('[*] Disconnecting...')
         self.__stop_thread = True
         time.sleep(1)
         self.ser.close()
