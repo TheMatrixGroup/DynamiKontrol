@@ -156,7 +156,7 @@ if __name__ == '__main__':
     m = Module()
     m.send(encoded)
     
-    print('received command', m.m2p.command, m.m2p.data)
+    print('received command', m.m2p.command)
     print('received data', m.m2p.data)
 
     time.sleep(0.1)
