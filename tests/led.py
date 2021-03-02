@@ -1,7 +1,7 @@
 import sys
 sys.path.insert(0, '../dynamikontrol')
 
-from dynamikontrol import Module, LED
+from dynamikontrol import Module
 import time
 
 module = Module(debug=True)
@@ -12,10 +12,10 @@ while True:
     if time.time() - start_time > 3:
         break
 
-    module.LED.on(id=0)
+    module.led.on(id=0)
     time.sleep(0.1)
 
-    module.LED.off(id=0)
+    module.led.off(id=0)
     time.sleep(0.1)
 
 module.disconnect()

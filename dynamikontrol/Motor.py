@@ -8,3 +8,13 @@ class Servo(object):
 
         data = self.m.p2m.set_command(0x05).set_data([direction, angle_hex]).encode()
         self.m.send(data)
+
+class Motor(object):
+    def __init__(self, module):
+        self.m = module
+
+        # TODO: if statement by m.pid
+        self.motor = Servo(module=self.m)
+
+    def angle(self, *args, **kwargs):
+        self.motor.angle(*args, **kwargs)

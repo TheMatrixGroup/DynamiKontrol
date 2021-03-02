@@ -6,6 +6,7 @@ import time
 
 from dynamikontrol.Protocol import Module2PC, PC2Module
 from dynamikontrol.LED import LED
+from dynamikontrol.Motor import Motor
 from dynamikontrol.helpers.helper import print_bytearray
 
 class Module(object):
@@ -63,7 +64,8 @@ class Module(object):
 
         self.connect()
 
-        self.LED = LED(module=self)
+        self.led = LED(module=self)
+        self.motor = Motor(module=self)
 
 
     def connect(self):
