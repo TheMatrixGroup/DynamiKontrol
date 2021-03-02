@@ -106,8 +106,7 @@ class Module(object):
                     if not data:
                         continue
 
-                    # TODO: check header field, remove 0x05
-                    if not self.__is_header_defined and (data == 0x05 or data == 0x06 or data == 0x15): # 0x06 ACK, 0x15 NACK
+                    if not self.__is_header_defined and (data == 0x06 or data == 0x15): # 0x06 ACK, 0x15 NACK
                         self.__is_header_defined = True
                         self.data_queue = bytearray()
 
