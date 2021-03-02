@@ -6,6 +6,7 @@ import time
 
 from dynamikontrol.Protocol import Module2PC, PC2Module
 from dynamikontrol.LED import LED
+from dynamikontrol.helpers.helper import print_bytearray
 
 class Module(object):
     serial_no = None
@@ -140,7 +141,7 @@ class Module(object):
                     self.__is_header_defined = False
 
                     if self.debug:
-                        print('[*] received %s' % (self.data_queue,))
+                        print('[*] received %s' % (print_bytearray(self.data_queue),))
                 except Exception as e:
                     print(e)
 
@@ -161,7 +162,7 @@ class Module(object):
             self.ser.write(data)
 
         if self.debug:
-            print('[*] Sent %s' % (data,))
+            print('[*] Sent %s' % (print_bytearray(data),))
 
 
 if __name__ == '__main__':
