@@ -30,8 +30,7 @@ class Timer(object):
         timer_thread.start()
 
     def callback_at(self, func, args=(), kwargs={}, at=None, interval=None):
-        delta = datetime.strptime(at, '%Y-%m-%d %H:%M:%S') - datetime.now()
-        after = delta.seconds
+        after = datetime.strptime(at, '%Y-%m-%d %H:%M:%S').timestamp() - datetime.now().timestamp()
 
         if after < 0:
             return False
