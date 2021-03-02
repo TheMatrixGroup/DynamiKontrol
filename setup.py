@@ -17,7 +17,9 @@ setuptools.setup(
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
-        "Operating System :: Windows, MacOS and Linux",
+        "Operating System :: OS Independent",
+        "Topic :: System :: Hardware",
+        "Topic :: System :: Hardware :: Hardware Drivers"
     ],
     packages=setuptools.find_packages(),
     python_requires=">=3.6",
