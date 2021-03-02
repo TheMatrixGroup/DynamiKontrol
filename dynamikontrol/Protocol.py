@@ -80,23 +80,16 @@ if __name__ == '__main__':
     import time
     from Module import Module
 
-    m = Module()
+    m = Module(debug=True)
     p2m = PC2Module()
-
-    m.send(p2m.set_command(0x00).encode()) # connect
-    print(m.m2p.data)
 
     while True:
         all_led_on = p2m.set_command(0x03).set_data([0x01, 0x01, 0x01]).encode()
-        print(all_led_on)
         m.send(all_led_on) # status LED RGY
-        print(m.m2p.data)
         time.sleep(0.1)
 
         all_led_off = p2m.set_command(0x03).set_data([0x00, 0x00, 0x00]).encode()
-        print(all_led_off)
         m.send(all_led_off) # status LED RGY
-        print(m.m2p.data)
         time.sleep(0.1)
 
     m.disconnect()

@@ -4,7 +4,7 @@ from serial.tools import list_ports
 import threading
 import time
 
-from Protocol import Module2PC
+from Protocol import Module2PC, PC2Module
 
 class Module(object):
     serial_no = None
@@ -26,14 +26,20 @@ class Module(object):
     __is_header_defined = False
     data_queue = bytearray()
 
-    def __init__(self, serial_no=None):
+    def __init__(self, serial_no=None, debug=False):
         self.serial_no = serial_no
+        self.debug = debug
+        self.p2m = PC2Module()
         self.m2p = Module2PC()
 
         ports = list_ports.comports(include_links=True)
 
         # TODO: filter dk port and assign to port
         for port in ports:
+            if self.debug:
+                for i, p in enumerate(port):
+                    print('[*] port[%d] %s' % (i, p))
+
             desc = port[2].lower()
             if 'vid:pid' not in desc:
                 continue
@@ -64,6 +70,8 @@ class Module(object):
 
         self.receive_thread = threading.Thread(target=self.receive, args=())
         self.receive_thread.start()
+
+        self.send(self.p2m.set_command(0x00).encode()) # connect
 
 
     def disconnect(self):
@@ -122,6 +130,9 @@ class Module(object):
                     data = self.m2p.decode(self.data_queue)
 
                     self.__is_header_defined = False
+
+                    if self.debug:
+                        print('[*] received %s' % (self.data_queue,))
                 except Exception as e:
                     print(e)
 
@@ -141,20 +152,16 @@ class Module(object):
         else:
             self.ser.write(data)
 
+        if self.debug:
+            print('[*] Sent %s' % (data,))
+
 
 if __name__ == '__main__':
     from Protocol import PC2Module
 
     p2m = PC2Module()
 
-    encoded = p2m.set_command(0x00).encode()
-    print('send', encoded)
-
-    m = Module()
-    m.send(encoded)
-    
-    print('received command', m.m2p.command)
-    print('received data', m.m2p.data)
+    m = Module(debug=True)
 
     time.sleep(0.1)
 
