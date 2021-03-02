@@ -4,7 +4,7 @@ from serial.tools import list_ports
 import threading
 import time
 
-from Protocol import Module2PC, PC2Module
+from dynamikontrol.Protocol import Module2PC, PC2Module
 
 class Module(object):
     serial_no = None
@@ -157,10 +157,6 @@ class Module(object):
 
 
 if __name__ == '__main__':
-    from Protocol import PC2Module
-
-    p2m = PC2Module()
-
     m = Module(debug=True)
 
     time.sleep(0.1)
