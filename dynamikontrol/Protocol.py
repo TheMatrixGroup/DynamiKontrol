@@ -73,7 +73,7 @@ class Module2PC(Protocol):
         except:
             raise ValueError('Module2PC invalid protocol length')
 
-        return self.data
+        return self.command, self.data
 
 
 if __name__ == '__main__':

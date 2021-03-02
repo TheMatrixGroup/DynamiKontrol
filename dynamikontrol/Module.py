@@ -14,8 +14,8 @@ class Module(object):
     vid = None
     pid = None
     # TODO: our vids and pids
-    avail_vids = ['0403']
-    avail_pids = ['6001']
+    avail_vids = ['0403', '03eb']
+    avail_pids = ['6001', '2044']
 
     is_connected = False
 
@@ -68,6 +68,10 @@ class Module(object):
 
     def disconnect(self):
         self.__stop_thread = True
+        self.ser.flushInput()
+        self.ser.flushOutput()
+        self.ser.close()
+        time.sleep(2)
 
 
     def read_delay(self, size=1):
@@ -94,10 +98,6 @@ class Module(object):
 
                     if not self.__is_header_defined:
                         continue
-
-                    if self.timestamp == 0:
-                        self.timestamp = time.time()
-                        print(self.timestamp)
 
                     # data queue
                     self.data_queue.append(data) # header
@@ -150,10 +150,14 @@ if __name__ == '__main__':
 
     p2m = PC2Module()
 
-    encoded = p2m.set_command(0x03).set_data([0x00, 0x01, 0x02]).encode() # status LED
+    encoded = p2m.set_command(0x00).encode()
+    print('send', encoded)
 
     m = Module()
     m.send(encoded)
+    
+    print('received command', m.m2p.command, m.m2p.data)
+    print('received data', m.m2p.data)
 
     time.sleep(0.1)
 
