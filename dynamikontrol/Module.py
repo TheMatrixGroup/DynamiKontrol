@@ -68,10 +68,8 @@ class Module(object):
 
     def disconnect(self):
         self.__stop_thread = True
-        self.ser.flushInput()
-        self.ser.flushOutput()
+        time.sleep(1)
         self.ser.close()
-        time.sleep(2)
 
 
     def read_delay(self, size=1):
@@ -129,7 +127,6 @@ class Module(object):
 
         self.is_connected = False
         self.__stop_thread = False
-        self.ser = None
 
 
     def send(self, data):
