@@ -15,7 +15,7 @@ t2.callback_after(func=module.led.toggle, args=(0,), after=1, interval=0.1)
 
 time.sleep(5)
 
-# t1.stop()
+t1.stop()
 t2.stop()
 
 module.disconnect()
