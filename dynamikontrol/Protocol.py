@@ -1,5 +1,6 @@
 class Protocol(object):
     header = 0x00
+    type = 0x00
     command = 0x00
     data_length = 0x00
     data = bytearray()
@@ -24,6 +25,10 @@ class PC2Module(Protocol):
     def __init__(self):
         super(PC2Module, self).__init__()
 
+    def set_type(self, type):
+        self.type = type
+        return self
+
     def set_command(self, command):
         self.command = command
         return self
@@ -39,6 +44,7 @@ class PC2Module(Protocol):
         self.checksum = self.encode_checksum()
 
         self.result.append(self.header)
+        self.result.append(self.type)
         self.result.append(self.command)
         self.result.append(self.data_length)
         self.result.extend(self.data)
@@ -60,9 +66,10 @@ class Module2PC(Protocol):
 
             # TODO: Check header success or fail
             self.header = byte[0]
-            self.command = byte[1]
-            self.data_length = byte[2]
-            self.data = byte[3:3+self.data_length]
+            self.type = byte[1]
+            self.command = byte[2]
+            self.data_length = byte[3]
+            self.data = byte[4:4+self.data_length]
             self.checksum = byte[-2]
             self.end = byte[-1]
 
@@ -74,22 +81,3 @@ class Module2PC(Protocol):
             raise ValueError('Module2PC invalid protocol length')
 
         return self.command, self.data
-
-
-if __name__ == '__main__':
-    import time
-    from Module import Module
-
-    m = Module(debug=True)
-    p2m = PC2Module()
-
-    while True:
-        all_led_on = p2m.set_command(0x03).set_data([0x01, 0x01, 0x01]).encode()
-        m.send(all_led_on) # status LED RGY
-        time.sleep(0.1)
-
-        all_led_off = p2m.set_command(0x03).set_data([0x00, 0x00, 0x00]).encode()
-        m.send(all_led_off) # status LED RGY
-        time.sleep(0.1)
-
-    m.disconnect()

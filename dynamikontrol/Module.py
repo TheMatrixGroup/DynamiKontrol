@@ -114,6 +114,7 @@ class Module(object):
 
                     # data queue
                     self.data_queue.append(data) # header
+                    self.data_queue.append(self.read_delay()) # type
                     self.data_queue.append(self.read_delay()) # command
 
                     # data_length
