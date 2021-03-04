@@ -8,6 +8,8 @@ m = Module(debug=True)
 # Print module serial number
 print('Serial number: %s' % (m.get_serial_no(),))
 
-m.led.blink(color='g', on_interval=1000, off_interval=100)
+print('ID: %s' % (m.get_id(), ))
+
+print('Device time: %s' % (m.get_time(), ))
 
 m.disconnect()
