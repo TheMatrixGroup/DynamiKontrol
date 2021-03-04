@@ -5,13 +5,13 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="DynamiKontrol",
-    version="0.0.1",
+    version="0.0.2",
     author="Taehee Lee",
     author_email="kairess87@gmail.com",
     description="DynamiKontrol Python API",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://m47rix.com",
+    url='https://github.com/TheMatrixGroup/DynamiKontrol',
     license='MIT',
     install_requires=['pyserial>=3.5'],
     classifiers=[
