@@ -77,7 +77,8 @@ class Module(object):
         self.receive_thread = threading.Thread(target=self.receive, args=())
         self.receive_thread.start()
 
-        self.send(self.p2m.set_command(0x00).encode()) # connect
+        self.send(self.p2m.set_type(0x00).set_command(0x00).encode()) # connect
+        time.sleep(0.1)
 
 
     def disconnect(self):
