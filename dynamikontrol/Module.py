@@ -137,12 +137,12 @@ class Module(object):
 
                     data = self.m2p.decode(self.data_queue)
 
-                    self.__is_header_defined = False
-
                     if self.debug:
                         print('[*] Recv %s' % (print_bytearray(self.data_queue),))
                 except Exception as e:
                     print(e)
+                finally:
+                    self.__is_header_defined = False
 
         self.is_connected = False
         self.__stop_thread = False

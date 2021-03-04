@@ -13,7 +13,7 @@ class Protocol(object):
         pass
 
     def encode_checksum(self):
-        checksum = self.command ^ self.data_length
+        checksum = self.type ^ self.command ^ self.data_length
         for d in self.data:
             checksum ^= d
         return checksum
