@@ -1,13 +1,24 @@
 class Servo(object):
-    type = 0x03
-    command = {
-        'angle': 0x00
-    }
+    """Servo motor submodule class.
 
+    Args:
+        module (object): Module object.
+    """
     def __init__(self, module):
         self.m = module
 
+        self.type = 0x03
+        self.command = {
+            'angle': 0x00
+        }
+
+
     def angle(self, angle):
+        """Control the angle of motor.
+
+        Args:
+            angle (int): If ``angle > 0`` moves along clockwise, otherwise moves along counter clockwise. ``angle`` must be between ``-85`` to ``85`` in degrees.
+        """
         direction = 0x00 if angle >= 0 else 0x01
         angle_hex = abs(angle)
 
