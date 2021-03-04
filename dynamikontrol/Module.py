@@ -16,9 +16,7 @@ class Module(object):
     baud = 115200
     vid = None
     pid = None
-    # TODO: our vids and pids
-    avail_vids = ['0403', '03eb']
-    avail_pids = ['6001', '2044']
+    avail_vids = ['3476']
 
     is_connected = False
 
@@ -37,7 +35,6 @@ class Module(object):
 
         ports = list_ports.comports(include_links=True)
 
-        # TODO: filter dk port and assign to port
         for port in ports:
             if self.debug:
                 for i, p in enumerate(port):
@@ -50,7 +47,7 @@ class Module(object):
             start_idx = desc.find('vid:pid=')
             self.vid, self.pid = desc[start_idx+8:start_idx+8+9].split(':')
 
-            if self.vid not in self.avail_vids or self.pid not in self.avail_pids:
+            if self.vid not in self.avail_vids:
                 continue
 
             start_idx = desc.find('ser=')
