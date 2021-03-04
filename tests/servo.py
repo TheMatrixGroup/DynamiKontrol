@@ -15,10 +15,10 @@ while True:
     if time.time() - start_time > 10:
         break
 
-    module.motor.angle(10)
+    module.motor.angle(45)
     time.sleep(2)
 
-    module.motor.angle(-10)
+    module.motor.angle(-45)
     time.sleep(2)
 
 module.disconnect()
