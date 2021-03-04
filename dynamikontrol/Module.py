@@ -111,7 +111,7 @@ class Module(object):
         """Read the data from the module using serial communication.
 
         Args:
-            size (int, optional): Length of bytes. Defaults to 1.
+            size (int, optional): Length of bytes. Defaults to ``1``.
 
         Returns:
             int: Data from the module.
