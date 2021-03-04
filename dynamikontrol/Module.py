@@ -17,6 +17,7 @@ class Module(object):
     vid = None
     pid = None
     avail_vids = ['3476']
+    serial_no_len = 8
 
     is_connected = False
 
@@ -75,13 +76,16 @@ class Module(object):
             print('[*] Connected to %s, baud rate: %d' % (self.port, self.baud))
 
         self.receive_thread = threading.Thread(target=self.receive, args=())
+        self.receive_thread._event = threading.Event()
         self.receive_thread.start()
+        self.receive_thread._event.set()
 
         self.send(self.p2m.set_type(0x00).set_command(0x00).encode()) # connect
         time.sleep(0.1)
 
 
     def disconnect(self):
+        time.sleep(1)
         if self.debug:
             print('[*] Disconnecting...')
         self.__stop_thread = True
@@ -100,6 +104,7 @@ class Module(object):
             self.__stop_thread = False
 
             while not self.__stop_thread:
+                self.receive_thread._event.wait()
                 try:
                     data = self.read_delay()
 
@@ -165,9 +170,19 @@ class Module(object):
             print('[*] Sent %s' % (print_bytearray(data),))
 
 
-if __name__ == '__main__':
-    m = Module(debug=True)
+    def get_serial_no(self):
+        self.receive_thread._event.clear() # pause receive thread
 
-    time.sleep(0.1)
+        self.send(self.p2m.set_type(0x00).set_command(0x80).encode())
+        time.sleep(0.1)
 
-    m.disconnect()
+        received_data = bytearray()
+
+        for i in range(self.serial_no_len + 6):
+            received_data.append(self.read_delay())
+
+        serial_no = self.m2p.decode(received_data)[1].decode('utf-8')
+
+        self.receive_thread._event.set() # resume receive thread
+
+        return serial_no
