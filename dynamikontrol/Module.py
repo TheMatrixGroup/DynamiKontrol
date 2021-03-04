@@ -11,32 +11,38 @@ from dynamikontrol.Motor import Motor
 from dynamikontrol.helpers.helper import print_bytearray
 
 class Module(object):
-    serial_no = None
-    port = None
-    ser = None
-    baud = 115200
-    vid = None
-    pid = None
-    avail_vids = ['3476']
-    serial_no_len = 8
-    id_len = 1
-    time_len = 8
-    manual_delay = 0.1
+    """Module class.
 
-    is_connected = False
-
+    Args:
+        serial_no (str): Specify serial number of the module.
+        debug (bool): print debug messages.
+    """
     __serial_receive_delay = 0
     __stop_thread = False
 
     # communication
     __is_header_defined = False
-    data_queue = bytearray()
 
     def __init__(self, serial_no=None, debug=False):
         self.serial_no = serial_no
         self.debug = debug
         self.p2m = PC2Module()
         self.m2p = Module2PC()
+
+        self.serial_no = None
+        self.port = None
+        self.ser = None
+        self.baud = 115200
+        self.vid = None
+        self.pid = None
+        self.avail_vids = ['3476']
+        self.serial_no_len = 8
+        self.id_len = 1
+        self.time_len = 8
+        self.manual_delay = 0.1
+        self.data_queue = bytearray()
+
+        is_connected = False
 
         ports = list_ports.comports(include_links=True)
 
@@ -71,6 +77,8 @@ class Module(object):
 
 
     def connect(self):
+        """Connect to the module.
+        """
         if self.port is None:
             raise IOError('Module is not connected!')
 
@@ -89,6 +97,8 @@ class Module(object):
 
 
     def disconnect(self):
+        """Close the connection of the module.
+        """
         time.sleep(1)
         if self.debug:
             print('[*] Disconnecting...')
@@ -98,11 +108,21 @@ class Module(object):
 
 
     def read_delay(self, size=1):
+        """Read the data from the module using serial communication.
+
+        Args:
+            size (int, optional): Length of bytes. Defaults to 1.
+
+        Returns:
+            int: Data from the module.
+        """
         time.sleep(self.__serial_receive_delay)
         return int.from_bytes(self.ser.read(size), byteorder='little')
 
 
     def receive(self):
+        """Receive data from the module. It runs on single thread for waiting response from the module.
+        """
         while not self.is_connected:
             self.is_connected = True
             self.__stop_thread = False
@@ -159,6 +179,15 @@ class Module(object):
 
 
     def manual_send_receive(self, send_data, receive_data_len):
+        """Pause receiving thread, send/receive data manually and resume receiving thread.
+
+        Args:
+            send_data (list of int): Data to send.
+            receive_data_len (int): Length of the data to receive.
+
+        Returns:
+            tuple: (command, received data)
+        """
         self.receive_thread._event.clear() # pause receive thread
 
         self.send(send_data)
@@ -177,6 +206,11 @@ class Module(object):
 
 
     def send(self, data):
+        """Send the data to the module
+
+        Args:
+            data (list of int): Data to send.
+        """
         if self.ser is None:
             raise IOError('Serial is not connected!')
 
@@ -193,6 +227,11 @@ class Module(object):
 
 
     def get_serial_no(self):
+        """Get serial number of the connected module.
+
+        Returns:
+            str: Serial number.
+        """
         command, serial_no = self.manual_send_receive(
             self.p2m.set_type(0x00).set_command(0x80).set_data([]).encode(),
             self.serial_no_len + 6
@@ -201,6 +240,11 @@ class Module(object):
 
 
     def get_id(self):
+        """Get ID of the connected module.
+
+        Returns:
+            int: Module ID.
+        """
         command, id = self.manual_send_receive(
             self.p2m.set_type(0x00).set_command(0x81).set_data([]).encode(),
             self.id_len + 6
@@ -209,6 +253,11 @@ class Module(object):
 
 
     def get_time(self):
+        """Get device time of the connected module.
+
+        Returns:
+            datetime: Device time.
+        """
         command, device_time = self.manual_send_receive(
             self.p2m.set_type(0x00).set_command(0x82).set_data([]).encode(),
             self.time_len + 6
