@@ -1,6 +1,26 @@
 class LED(object):
     """LED submodule class.
 
+    .. highlight:: python
+    .. code-block:: python
+
+        from dynamikontrol import Module
+        import time
+
+        module = Module()
+
+        module.led.blink(color='r') # blink red
+        module.led.toggle(color='g') # toggle green
+
+        while True:
+            module.led.on(color='y') # turn on yellow
+            time.sleep(0.1)
+
+            module.led.off(color='y') # turn off yellow
+            time.sleep(0.1)
+
+        module.disconnect()
+
     Args:
         module (object): Module object.
     """

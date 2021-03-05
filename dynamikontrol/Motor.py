@@ -1,6 +1,26 @@
 class Servo(object):
     """Servo motor submodule class.
 
+    .. highlight:: python
+    .. code-block:: python
+
+        from dynamikontrol import Module
+        import time
+
+        module = Module()
+
+        module.motor.angle(0)
+        time.sleep(2)
+
+        while True:
+            module.motor.angle(45)
+            time.sleep(2)
+
+            module.motor.angle(-45)
+            time.sleep(2)
+
+        module.disconnect()
+
     Args:
         module (object): Module object.
     """

@@ -9,9 +9,9 @@ t2 = Timer()
 
 module = Module(debug=True)
 
-t1.callback_at(func=module.led.toggle, args=(0,), at='2021-03-02 19:46:30', interval=0.1)
+t1.callback_at(func=module.led.toggle, args=('r',), at='2021-03-02 19:46:30', interval=0.1)
 
-t2.callback_after(func=module.led.toggle, args=(0,), after=1, interval=0.1)
+t2.callback_after(func=module.led.toggle, args=('g',), after=1, interval=0.1)
 
 time.sleep(5)
 

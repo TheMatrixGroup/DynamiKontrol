@@ -13,6 +13,18 @@ from dynamikontrol.helpers.helper import print_bytearray
 class Module(object):
     """Module class.
 
+    .. highlight:: python
+    .. code-block:: python
+
+        from dynamikontrol import Module
+
+        module = Module(serial_no) # specify the module by serial number
+
+        # Print module serial number
+        print('Serial number: %s' % (module.get_serial_no(),)
+
+        module.disconnect()
+
     Args:
         serial_no (str): Specify serial number of the module.
         debug (bool): print debug messages.
