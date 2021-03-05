@@ -10,6 +10,8 @@ from dynamikontrol.LED import LED
 from dynamikontrol.Motor import Motor
 from dynamikontrol.helpers.helper import print_bytearray
 
+from dynamikontrol.Base_LED import Base_LED
+
 class Module(object):
     """Module class.
 
@@ -87,6 +89,8 @@ class Module(object):
 
         self.led = LED(module=self)
         self.motor = Motor(module=self)
+
+        self.base_led = Base_LED(module=self)
 
 
     def connect(self):
