@@ -44,7 +44,8 @@ class Module(object):
         self.serial_no = None
         self.port = None
         self.ser = None
-        self.baud = 115200
+        #self.baud = 115200
+        self.baud = 921600
         self.vid = None
         self.pid = None
         self.avail_vids = ['3476']
@@ -54,7 +55,7 @@ class Module(object):
         self.manual_delay = 0.1
         self.data_queue = bytearray()
 
-        is_connected = False
+        self.is_connected = False
 
         ports = list_ports.comports(include_links=True)
 
