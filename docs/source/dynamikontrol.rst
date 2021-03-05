@@ -1,14 +1,6 @@
 dynamikontrol package
 =====================
 
-Subpackages
------------
-
-.. toctree::
-   :maxdepth: 4
-
-   dynamikontrol.helpers
-
 Submodules
 ----------
 
@@ -32,14 +24,6 @@ dynamikontrol.Motor module
 --------------------------
 
 .. automodule:: dynamikontrol.Motor
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-dynamikontrol.Protocol module
------------------------------
-
-.. automodule:: dynamikontrol.Protocol
    :members:
    :undoc-members:
    :show-inheritance:
