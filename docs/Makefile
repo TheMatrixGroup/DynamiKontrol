@@ -18,3 +18,12 @@ help:
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 %: Makefile
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+
+extract_i18n:
+	make html
+	make gettext
+	sphinx-intl update -p _build/locale -l ko
+
+update_i18n:
+	sphinx-intl build
+	make -e SPHINXOPTS="-D language='ko'" html
