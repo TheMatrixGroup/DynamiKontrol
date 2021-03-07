@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DynamiKontrol \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-07 18:44+0900\n"
+"POT-Creation-Date: 2021-03-07 19:47+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,7 +33,7 @@ msgstr ""
 #: dynamikontrol.LED.LED:1 dynamikontrol.Module.Module:1
 #: dynamikontrol.Motor.Motor:1 dynamikontrol.Motor.Servo:1
 #: dynamikontrol.Timer.Timer:1 of
-msgid "기반 클래스: :class:`object`"
+msgid "Bases: :class:`object`"
 msgstr ""
 
 #: dynamikontrol.LED.LED:1 of
@@ -47,7 +47,7 @@ msgstr "LED 서브 모듈 클래스."
 #: dynamikontrol.Motor.Servo dynamikontrol.Motor.Servo.angle
 #: dynamikontrol.Timer.Timer.callback_after
 #: dynamikontrol.Timer.Timer.callback_at of
-msgid "매개변수"
+msgid "Parameters"
 msgstr ""
 
 #: dynamikontrol.LED.LED:23 dynamikontrol.Motor.Servo:23 of
@@ -117,7 +117,7 @@ msgstr "연결된 모듈의 ID를 가져온다."
 #: dynamikontrol.Module.Module.get_time
 #: dynamikontrol.Module.Module.manual_send_receive
 #: dynamikontrol.Module.Module.read_delay of
-msgid "반환값"
+msgid "Returns"
 msgstr ""
 
 #: dynamikontrol.Module.Module.get_id:3 of
@@ -128,7 +128,7 @@ msgstr "모듈의 ID"
 #: dynamikontrol.Module.Module.get_time
 #: dynamikontrol.Module.Module.manual_send_receive
 #: dynamikontrol.Module.Module.read_delay of
-msgid "반환 형식"
+msgid "Return type"
 msgstr ""
 
 #: dynamikontrol.Module.Module.get_serial_no:1 of
@@ -261,16 +261,3 @@ msgstr "타이머를 중지한다."
 #: ../../source/dynamikontrol.rst:40
 msgid "Module contents"
 msgstr ""
-
-#~ msgid "Bases: :class:`object`"
-#~ msgstr ""
-
-#~ msgid "Parameters"
-#~ msgstr ""
-
-#~ msgid "Returns"
-#~ msgstr ""
-
-#~ msgid "Return type"
-#~ msgstr ""
-
