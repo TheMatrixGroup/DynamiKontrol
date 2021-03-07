@@ -205,8 +205,8 @@ msgid ""
 "If ``angle > 0`` moves along clockwise, otherwise moves along counter "
 "clockwise. ``angle`` must be between ``-85`` to ``85`` in degrees."
 msgstr ""
-"만약 ``angle > 0``이면 시계방향으로 움직이고, ``angle < 0``이면 시계반대방향으로 움직인다. "
-"``angle``값은 반드시 ``-85``에서 ``85`` 사이의 값을 갖는다 (단위: 도)"
+"만약 ``angle > 0`` 이면 시계방향으로 움직이고, ``angle < 0`` 이면 시계반대방향으로 움직인다. "
+"``angle`` 값은 반드시 ``-85`` 에서 ``85`` 사이의 값을 갖는다 (단위: 도)"
 
 #: ../../source/dynamikontrol.rst:32
 msgid "dynamikontrol.Timer module"
