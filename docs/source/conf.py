@@ -13,7 +13,6 @@
 #
 import os
 import sys
-sys.setdefaultencoding('utf-8')
 # sys.path.insert(0, os.path.abspath('.'))
 sys.path.insert(0, os.path.abspath('../..'))
 
