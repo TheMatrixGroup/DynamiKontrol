@@ -1,0 +1,36 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, Taehee Lee
+# This file is distributed under the same license as the DynamiKontrol
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: DynamiKontrol \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-07 17:06+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#: ../../source/installation.md:1
+msgid "Installation"
+msgstr "설치"
+
+#: ../../source/installation.md:3
+msgid "Installation in pip"
+msgstr "pip을 이용한 설치"
+
+#: ../../source/installation.md:5
+msgid "To install the library via pip, simply execute:"
+msgstr "pip을 이용해 설치하려면 아래 명령어를 입력하세요:"
+
+#: ../../source/installation.md:11
+msgid "This installs the latest version from pypi."
+msgstr "pypi에서 가장 최신 버전의 라이브러리를 설치합니다."
+

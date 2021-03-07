@@ -1,0 +1,262 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, Taehee Lee
+# This file is distributed under the same license as the DynamiKontrol
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: DynamiKontrol \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-07 17:06+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#: ../../source/dynamikontrol.rst:2
+msgid "dynamikontrol package"
+msgstr "dynamikontrol 패키지"
+
+#: ../../source/dynamikontrol.rst:5
+msgid "Submodules"
+msgstr ""
+
+#: ../../source/dynamikontrol.rst:8
+msgid "dynamikontrol.LED module"
+msgstr ""
+
+#: dynamikontrol.LED.LED:1 dynamikontrol.Module.Module:1
+#: dynamikontrol.Motor.Motor:1 dynamikontrol.Motor.Servo:1
+#: dynamikontrol.Timer.Timer:1 of
+msgid "Bases: :class:`object`"
+msgstr ""
+
+#: dynamikontrol.LED.LED:1 of
+msgid "LED submodule class."
+msgstr "LED 서브 모듈 클래스."
+
+#: dynamikontrol.LED.LED dynamikontrol.LED.LED.blink dynamikontrol.LED.LED.off
+#: dynamikontrol.LED.LED.on dynamikontrol.LED.LED.toggle
+#: dynamikontrol.Module.Module dynamikontrol.Module.Module.manual_send_receive
+#: dynamikontrol.Module.Module.read_delay dynamikontrol.Module.Module.send
+#: dynamikontrol.Motor.Servo dynamikontrol.Motor.Servo.angle
+#: dynamikontrol.Timer.Timer.callback_after
+#: dynamikontrol.Timer.Timer.callback_at of
+msgid "Parameters"
+msgstr ""
+
+#: dynamikontrol.LED.LED:23 dynamikontrol.Motor.Servo:23 of
+msgid "Module object."
+msgstr "Module 객체"
+
+#: dynamikontrol.LED.LED.blink:1 of
+msgid "Blink the LED light periodically."
+msgstr "LED를 주기적으로 깜빡인다."
+
+#: dynamikontrol.LED.LED.blink:3 dynamikontrol.LED.LED.off:3
+#: dynamikontrol.LED.LED.on:3 dynamikontrol.LED.LED.toggle:3 of
+msgid "Color of the LED light. ``r``, ``y`` or ``g``. Defaults to ``all``."
+msgstr "LED 색상. ``r``, ``y``, ``g``. 기본값 ``all``."
+
+#: dynamikontrol.LED.LED.blink:5 of
+msgid "Turn on delay in milliseconds. Defaults to ``256``."
+msgstr "LED가 켜진 상태로 유지되는 시간, 단위 밀리세컨드. 기본값 ``256``."
+
+#: dynamikontrol.LED.LED.blink:7 of
+msgid "Turn off delay in milliseconds. Defaults to ``256``."
+msgstr "LED가 꺼진 상태로 유지되는 시간, 단위 밀리세컨드. 기본값 ``256``"
+
+#: dynamikontrol.LED.LED.off:1 of
+msgid "Turn off the LED light"
+msgstr "LED를 끈다."
+
+#: dynamikontrol.LED.LED.on:1 of
+msgid "Turn on the LED light."
+msgstr "LED를 켠다."
+
+#: dynamikontrol.LED.LED.toggle:1 of
+msgid ""
+"Toggle the LED light. Turn off while the light on status and turn on "
+"while the light off."
+msgstr "LED 켜짐/꺼짐 상태를 토글한다. 만약 꺼져있다면 켜고, 켜져 있다면 끈다."
+
+#: ../../source/dynamikontrol.rst:16
+msgid "dynamikontrol.Module module"
+msgstr ""
+
+#: dynamikontrol.Module.Module:1 of
+msgid "Module class."
+msgstr ""
+
+#: dynamikontrol.Module.Module:15 of
+msgid "Specify serial number of the module."
+msgstr "특정 시리얼 번호의 모듈을 제어한다."
+
+#: dynamikontrol.Module.Module:17 of
+msgid "print debug messages."
+msgstr "디버그 메시지를 출력한다."
+
+#: dynamikontrol.Module.Module.connect:1 of
+msgid "Connect to the module."
+msgstr "모듈에 연결한다."
+
+#: dynamikontrol.Module.Module.disconnect:1 of
+msgid "Close the connection of the module."
+msgstr "모듈과 연결을 끊는다."
+
+#: dynamikontrol.Module.Module.get_id:1 of
+msgid "Get ID of the connected module."
+msgstr "연결된 모듈의 ID를 가져온다."
+
+#: dynamikontrol.Module.Module.get_id dynamikontrol.Module.Module.get_serial_no
+#: dynamikontrol.Module.Module.get_time
+#: dynamikontrol.Module.Module.manual_send_receive
+#: dynamikontrol.Module.Module.read_delay of
+msgid "Returns"
+msgstr ""
+
+#: dynamikontrol.Module.Module.get_id:3 of
+msgid "Module ID."
+msgstr "모듈의 ID"
+
+#: dynamikontrol.Module.Module.get_id dynamikontrol.Module.Module.get_serial_no
+#: dynamikontrol.Module.Module.get_time
+#: dynamikontrol.Module.Module.manual_send_receive
+#: dynamikontrol.Module.Module.read_delay of
+msgid "Return type"
+msgstr ""
+
+#: dynamikontrol.Module.Module.get_serial_no:1 of
+msgid "Get serial number of the connected module."
+msgstr "연결된 모듈의 시리얼 번호를 가져온다."
+
+#: dynamikontrol.Module.Module.get_serial_no:3 of
+msgid "Serial number."
+msgstr "시리얼 번호"
+
+#: dynamikontrol.Module.Module.get_time:1 of
+msgid "Get device time of the connected module."
+msgstr "연결된 모듈의 기기 시간을 가져온다."
+
+#: dynamikontrol.Module.Module.get_time:3 of
+msgid "Device time."
+msgstr "기기 시간"
+
+#: dynamikontrol.Module.Module.manual_send_receive:1 of
+msgid ""
+"Pause receiving thread, send/receive data manually and resume receiving "
+"thread."
+msgstr "수신 쓰레드를 잠시 멈추고, 송/수신을 수동으로 진행한 후 다시 수신 쓰레드를 켠다."
+
+#: dynamikontrol.Module.Module.manual_send_receive:3
+#: dynamikontrol.Module.Module.send:3 of
+msgid "Data to send."
+msgstr "전송할 데이터"
+
+#: dynamikontrol.Module.Module.manual_send_receive:5 of
+msgid "Length of the data to receive."
+msgstr "수신할 데이터의 길이"
+
+#: dynamikontrol.Module.Module.manual_send_receive:8 of
+msgid "(command, received data)"
+msgstr ""
+
+#: dynamikontrol.Module.Module.read_delay:1 of
+msgid "Read the data from the module using serial communication."
+msgstr "시리얼 통신을 사용하여 모듈로부터 데이터를 수신한다."
+
+#: dynamikontrol.Module.Module.read_delay:3 of
+msgid "Length of bytes. Defaults to ``1``."
+msgstr "수신한 데이터의 길이(바이트). 기본값 ``1``"
+
+#: dynamikontrol.Module.Module.read_delay:6 of
+msgid "Data from the module."
+msgstr "모듈로부터 수신한 데이터"
+
+#: dynamikontrol.Module.Module.receive:1 of
+msgid ""
+"Receive data from the module. It runs on single thread for waiting "
+"response from the module."
+msgstr "모듈로부터 데이터를 받는다. 단일 쓰레드를 사용하여 모듈로부터의 응답을 기다린다."
+
+#: dynamikontrol.Module.Module.send:1 of
+msgid "Send the data to the module"
+msgstr "모듈에 데이터를 보낸다."
+
+#: ../../source/dynamikontrol.rst:24
+msgid "dynamikontrol.Motor module"
+msgstr ""
+
+#: dynamikontrol.Motor.Servo:1 of
+msgid "Servo motor submodule class."
+msgstr "서보 모터 서브 모듈 클래스"
+
+#: dynamikontrol.Motor.Servo.angle:1 of
+msgid "Control the angle of motor."
+msgstr "모터의 각도를 조절한다."
+
+#: dynamikontrol.Motor.Servo.angle:3 of
+msgid ""
+"If ``angle > 0`` moves along clockwise, otherwise moves along counter "
+"clockwise. ``angle`` must be between ``-85`` to ``85`` in degrees."
+msgstr "만약 ``angle > 0``이면 시계방향으로 움직이고, ``angle < 0``이면 시계반대방향으로 움직인다. ``angle``값은 반드시 ``-85``에서 ``85`` 사이의 값을 갖는다 (단위: 도)"
+
+#: ../../source/dynamikontrol.rst:32
+msgid "dynamikontrol.Timer module"
+msgstr ""
+
+#: dynamikontrol.Timer.Timer:1 of
+msgid "General timer class."
+msgstr "기본 타이머 클래스."
+
+#: dynamikontrol.Timer.Timer.callback_after:1 of
+msgid "Call the callback function after specific time."
+msgstr "일정 시간 후에 콜백 함수를 호출한다."
+
+#: dynamikontrol.Timer.Timer.callback_after:3
+#: dynamikontrol.Timer.Timer.callback_at:3 of
+msgid "Callback function."
+msgstr "콜백 함수."
+
+#: dynamikontrol.Timer.Timer.callback_after:5
+#: dynamikontrol.Timer.Timer.callback_at:5 of
+msgid "args. Defaults to ``()``."
+msgstr "args 인자. 기본값 ``()``."
+
+#: dynamikontrol.Timer.Timer.callback_after:7
+#: dynamikontrol.Timer.Timer.callback_at:7 of
+msgid "kwargs. Defaults to ``{}``."
+msgstr "kwargs 인자. 기본값 ``{}``."
+
+#: dynamikontrol.Timer.Timer.callback_after:9 of
+msgid "Callback delay time in seconds. Defaults to ``0``."
+msgstr "콜백 대기 시간 (초). 기본값 ``0``."
+
+#: dynamikontrol.Timer.Timer.callback_after:11
+#: dynamikontrol.Timer.Timer.callback_at:11 of
+msgid "Callback interval time in seconds. Defaults to ``None``."
+msgstr "콜백 주기 (초). 기본값 ``None``."
+
+#: dynamikontrol.Timer.Timer.callback_at:1 of
+msgid "Call the callback function at specific time."
+msgstr "특정 시간에 콜백 함수를 호출한다."
+
+#: dynamikontrol.Timer.Timer.callback_at:9 of
+msgid ""
+"Callback time in datetime str. e.g) ``2021-03-04 21:57:30``. Defaults to "
+"``None``."
+msgstr "콜백 시간 datetime 문자열. 예) ``2021-03-04 21:57:30``. 기본값 ``None``."
+
+#: dynamikontrol.Timer.Timer.stop:1 of
+msgid "Stop the timer."
+msgstr "타이머를 중지한다."
+
+#: ../../source/dynamikontrol.rst:40
+msgid "Module contents"
+msgstr ""
+

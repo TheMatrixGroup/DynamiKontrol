@@ -1,0 +1,51 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, Taehee Lee
+# This file is distributed under the same license as the DynamiKontrol
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: DynamiKontrol \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-07 17:06+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#: ../../source/index.rst:11
+msgid "Contents:"
+msgstr ""
+
+#: ../../source/index.rst:7
+msgid "DynamiKontrol Python API"
+msgstr ""
+
+#: ../../source/index.rst:9
+msgid ""
+"DynamiKontrol is a API for controlling DynamiKontrol module as motors, "
+"LEDs or so on. You can find our modules at https://www.m47rix.com. Please"
+" contact us matrix.ai.solution@gmail.com"
+msgstr "DynamiKontrol API는 DynamiKontrol 모듈의 모터, LED와 같은 하드웨어를 제어할 수 있는 사용하기 쉬운 파이썬 API입니다. 구매를 원하시면 https://www.m47rix.com 또는 matrix.ai.solution@gmail.com 으로 문의주세요."
+
+#: ../../source/index.rst:20
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../source/index.rst:22
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../source/index.rst:23
+msgid ":ref:`modindex`"
+msgstr ""
+
+#: ../../source/index.rst:24
+msgid ":ref:`search`"
+msgstr ""
+
