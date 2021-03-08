@@ -18,7 +18,7 @@ while True:
     module.motor.angle(45)
     time.sleep(2)
 
-    module.motor.angle(-45)
-    time.sleep(2)
+    module.motor.angle(angle=-45, period=5)
+    time.sleep(5)
 
 module.disconnect()

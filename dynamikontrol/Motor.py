@@ -29,21 +29,30 @@ class Servo(object):
 
         self.type = 0x03
         self.command = {
-            'angle': 0x00
+            'angle': 0x00,
+            'angle_period': 0x01
         }
 
 
-    def angle(self, angle):
+    def angle(self, angle, period=None):
         """Control the angle of motor.
 
         Args:
             angle (int): If ``angle > 0`` moves along clockwise, otherwise moves along counter clockwise. ``angle`` must be between ``-85`` to ``85`` in degrees.
+            period (uint): Control period. ``period`` must be between ``0`` to ``65535`` in millisecond. Defaults to ``None``.
         """
         direction = 0x00 if angle >= 0 else 0x01
         angle_hex = abs(angle)
 
-        data = self.m.p2m.set_type(self.type).set_command(self.command['angle']).set_data([direction, angle_hex]).encode()
+        if period is None:
+            data = self.m.p2m.set_type(self.type).set_command(self.command['angle']).set_data([direction, angle_hex]).encode()
+        else:
+            period_h = (period >> 8) & 0xff
+            period_l = period & 0xff
+
+            data = self.m.p2m.set_type(self.type).set_command(self.command['angle_period']).set_data([direction, angle_hex, period_h, period_l]).encode()
         self.m.send(data)
+
 
 class Motor(object):
     def __init__(self, module):

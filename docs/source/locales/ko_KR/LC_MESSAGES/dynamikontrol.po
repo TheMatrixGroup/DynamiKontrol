@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DynamiKontrol \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-07 19:47+0900\n"
+"POT-Creation-Date: 2021-03-08 12:09+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -205,8 +205,14 @@ msgid ""
 "If ``angle > 0`` moves along clockwise, otherwise moves along counter "
 "clockwise. ``angle`` must be between ``-85`` to ``85`` in degrees."
 msgstr ""
-"만약 ``angle > 0`` 이면 시계방향으로 움직이고, ``angle < 0`` 이면 시계반대방향으로 움직인다. "
-"``angle`` 값은 반드시 ``-85`` 에서 ``85`` 사이의 값을 갖는다 (단위: 도)"
+"만약 ``angle > 0`` 이면 시계방향으로 움직이고, ``angle < 0`` 이면 시계반대방향으로 움직인다, 단위 도. "
+"``angle`` 값은 반드시 ``-85`` 에서 ``85`` 사이의 값을 갖는다."
+
+#: dynamikontrol.Motor.Servo.angle:5 of
+msgid ""
+"Control period. ``period`` must be between ``0`` to ``65535`` in "
+"millisecond. Defaults to ``None``."
+msgstr "모터가 움직이는 시간을 정의한다, 단위 밀리세컨드. ``period`` 는 반드시 ``0`` 에서 ``65536`` 사이의 값을 갖는다. 기본값 ``None``."
 
 #: ../../source/dynamikontrol.rst:32
 msgid "dynamikontrol.Timer module"
@@ -261,3 +267,4 @@ msgstr "타이머를 중지한다."
 #: ../../source/dynamikontrol.rst:40
 msgid "Module contents"
 msgstr ""
+

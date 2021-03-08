@@ -1,6 +1,6 @@
 #!/bin/bash
 rm -rf build/*
-sphinx-apidoc -f -o source/ ../dynamikontrol ../dynamikontrol/Protocol.py ../dynamikontrol/helpers
+sphinx-apidoc -f -o source/ ../dynamikontrol ../dynamikontrol/Protocol.py ../dynamikontrol/BaseLED.py ../dynamikontrol/helpers
 make html
 
 cd source

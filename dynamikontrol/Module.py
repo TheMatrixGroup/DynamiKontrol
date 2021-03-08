@@ -54,7 +54,7 @@ class Module(object):
         self.manual_delay = 0.1
         self.data_queue = bytearray()
 
-        is_connected = False
+        self.is_connected = False
 
         ports = list_ports.comports(include_links=True)
 
