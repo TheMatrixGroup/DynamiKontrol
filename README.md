@@ -15,10 +15,12 @@ module.motor.angle(angle=0)
 time.sleep(2)
 
 while True:
+    # move 45 degree in clockwise
     module.motor.angle(angle=45)
     time.sleep(2)
 
-    module.motor.angle(angle=-45, period=5)
+    # move 45 degree in counter clockwise during 5000 milliseconds
+    module.motor.angle(angle=-45, period=5000)
     time.sleep(5)
 ```
 
