@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DynamiKontrol \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-07 17:06+0900\n"
+"POT-Creation-Date: 2021-03-08 19:58+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,6 +22,10 @@ msgstr ""
 msgid "Contents:"
 msgstr ""
 
+#: ../../source/index.rst:18
+msgid "Examples:"
+msgstr ""
+
 #: ../../source/index.rst:7
 msgid "DynamiKontrol Python API"
 msgstr ""
@@ -31,21 +35,24 @@ msgid ""
 "DynamiKontrol is a API for controlling DynamiKontrol module as motors, "
 "LEDs or so on. You can find our modules at https://www.m47rix.com. Please"
 " contact us matrix.ai.solution@gmail.com"
-msgstr "DynamiKontrol API는 DynamiKontrol 모듈의 모터, LED와 같은 하드웨어를 제어할 수 있는 사용하기 쉬운 파이썬 API입니다. 구매를 원하시면 https://www.m47rix.com 또는 matrix.ai.solution@gmail.com 으로 문의주세요."
+msgstr ""
+"DynamiKontrol API는 DynamiKontrol 모듈의 모터, LED와 같은 하드웨어를 제어할 수 있는 사용하기 쉬운 "
+"파이썬 API입니다. 구매를 원하시면 https://www.m47rix.com 또는 "
+"matrix.ai.solution@gmail.com 으로 문의주세요."
 
-#: ../../source/index.rst:20
+#: ../../source/index.rst:25
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../source/index.rst:22
+#: ../../source/index.rst:27
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../source/index.rst:23
+#: ../../source/index.rst:28
 msgid ":ref:`modindex`"
 msgstr ""
 
-#: ../../source/index.rst:24
+#: ../../source/index.rst:29
 msgid ":ref:`search`"
 msgstr ""
 

@@ -15,6 +15,11 @@ DynamiKontrol is a API for controlling DynamiKontrol module as motors, LEDs or s
    installation
    dynamikontrol
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Examples:
+
+   face_tracking_camera
 
 Indices and tables
 ==================

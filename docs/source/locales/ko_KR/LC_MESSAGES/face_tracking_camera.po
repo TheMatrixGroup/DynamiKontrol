@@ -1,0 +1,61 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, Taehee Lee
+# This file is distributed under the same license as the DynamiKontrol
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: DynamiKontrol \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-08 20:11+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#: ../../source/face_tracking_camera.md:1
+msgid "Face Tracking Camera"
+msgstr "얼굴 추적 카메라"
+
+#: ../../source/face_tracking_camera.md:3
+msgid ""
+"Face tracking algorithm is not included in DynamiKontrol package. So we "
+"use Mediapipe face tracking solution for face tracking and OpenCV for "
+"streaming webcam."
+msgstr "DynamiKontrol에는 얼굴 추적 알고리즘이 포함되어 있지 않습니다. 따라서 Mediapipe의 Face tracking solution을 사용하였고, OpenCV를 사용하여 웹캠을 제어합니다."
+
+#: ../../source/face_tracking_camera.md:5
+msgid "Explanation"
+msgstr "설명"
+
+#: ../../source/face_tracking_camera.md:9
+msgid ""
+"Let's define x1, x2 are top left point and bottom right point of face "
+"bounding box, then cx would be center point of the face. Mediapipe face "
+"tracking solution returns relative coordinates of the input image, so "
+"range of cx would be 0.0 to 1.0. For instance, if your face is located in"
+" exact center of the image, cx is 0.5."
+msgstr ""
+"``x1``, ``x2`` 를 각각 얼굴 바운딩 박스의 왼쪽 위 좌표, 오른쪽 아래 좌표라고 가정하고, ``cx`` 를 얼굴의 중심"
+" 좌표라고 가정합시다. Mediapipe는 좌표를 입력 이미지의 상대 좌표로 반환하므로 ``cx`` 의 값 범위는 ``0.0`` "
+"에서 ``1.0`` 사이가 될 것입니다. 예를 들어 이미지 안에서 얼굴이 정중앙에 위치한다면 ``cx`` 의 값은 ``0.5`` 가"
+" 됩니다."
+
+#: ../../source/face_tracking_camera.md:22
+msgid ""
+"If cx < 0.4, face is located in the left of the image, camera should move"
+" to left, and it means the motor should move to clockwise(+). Otherwise "
+"vice versa."
+msgstr ""
+"만약 ``cx < 0.4`` 이면 이미지의 왼쪽에 얼굴이 위치하는 것이고, 카메라는 왼쪽으로 회전해야 합니다. 이것은 모터가 "
+"시계방향으로 움직이는 것을 뜻합니다. ``cx > 0.6`` 이면 반대로 움직입니다."
+
+#: ../../source/face_tracking_camera.md:24
+msgid "Source Code"
+msgstr "소스코드"
+
