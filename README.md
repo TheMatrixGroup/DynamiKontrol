@@ -4,7 +4,11 @@
 
 DynamiKontol is Python API for controlling motors and hardware modules. You can integrate your Python code such as TensorFlow, PyTorch or OpenCV with hardwares.
 
-## Example
+## Getting Started
+
+```
+pip install -U DynamiKontrol
+```
 
 ```python
 from dynamikontrol import Module
@@ -23,6 +27,12 @@ while True:
     module.motor.angle(angle=-45, period=5000)
     time.sleep(5)
 ```
+
+## Examples
+
+| Example | Source Code |
+| --- | --- |
+| Face Tracking Camera | [Link](https://dynamikontrol.readthedocs.io/en/latest/face_tracking_camera.html) |
 
 ## Documentation
 

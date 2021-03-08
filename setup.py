@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="DynamiKontrol",
-    version="0.0.3",
+    version="0.0.4",
     author="Taehee Lee",
     author_email="kairess87@gmail.com",
     description="DynamiKontrol Python API",
