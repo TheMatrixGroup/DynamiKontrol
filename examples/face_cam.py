@@ -1,6 +1,6 @@
 import cv2
 import mediapipe as mp
-from dynamikontrol import Module, BaseLED
+from dynamikontrol import Module
 
 ANGLE_STEP = 1
 
