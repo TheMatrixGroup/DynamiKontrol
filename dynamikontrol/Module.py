@@ -194,7 +194,7 @@ class Module(object):
         """Pause receiving thread, send/receive data manually and resume receiving thread.
 
         Args:
-            send_data (list of int): Data to send.
+            send_data (bytearray of int): Data to send.
             receive_data_len (int): Length of the data to receive.
 
         Returns:
@@ -221,7 +221,7 @@ class Module(object):
         """Send the data to the module
 
         Args:
-            data (list of int): Data to send.
+            data (bytearray of int): Data to send.
         """
         if self.ser is None:
             raise IOError('Serial is not connected!')
