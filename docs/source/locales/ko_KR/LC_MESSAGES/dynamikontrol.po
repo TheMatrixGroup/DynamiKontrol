@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DynamiKontrol \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-09 14:20+0900\n"
+"POT-Creation-Date: 2021-03-09 14:48+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,8 +42,7 @@ msgstr "LED 서브 모듈 클래스."
 
 #: dynamikontrol.LED.LED dynamikontrol.LED.LED.blink dynamikontrol.LED.LED.off
 #: dynamikontrol.LED.LED.on dynamikontrol.LED.LED.toggle
-#: dynamikontrol.Module.Module dynamikontrol.Module.Module.manual_send_receive
-#: dynamikontrol.Module.Module.read_delay dynamikontrol.Module.Module.send
+#: dynamikontrol.Module.Module dynamikontrol.Module.Module.send
 #: dynamikontrol.Motor.Servo dynamikontrol.Motor.Servo.angle
 #: dynamikontrol.Timer.Timer.callback_after
 #: dynamikontrol.Timer.Timer.callback_at of
@@ -124,9 +123,7 @@ msgid "Get ID of the connected module."
 msgstr "연결된 모듈의 ID를 가져온다."
 
 #: dynamikontrol.Module.Module.get_id dynamikontrol.Module.Module.get_serial_no
-#: dynamikontrol.Module.Module.get_time
-#: dynamikontrol.Module.Module.manual_send_receive
-#: dynamikontrol.Module.Module.read_delay of
+#: dynamikontrol.Module.Module.get_time of
 msgid "Returns"
 msgstr ""
 
@@ -135,9 +132,7 @@ msgid "Module ID."
 msgstr "모듈의 ID"
 
 #: dynamikontrol.Module.Module.get_id dynamikontrol.Module.Module.get_serial_no
-#: dynamikontrol.Module.Module.get_time
-#: dynamikontrol.Module.Module.manual_send_receive
-#: dynamikontrol.Module.Module.read_delay of
+#: dynamikontrol.Module.Module.get_time of
 msgid "Return type"
 msgstr ""
 
@@ -157,46 +152,13 @@ msgstr "연결된 모듈의 기기 시간을 가져온다."
 msgid "Device time."
 msgstr "기기 시간"
 
-#: dynamikontrol.Module.Module.manual_send_receive:1 of
-msgid ""
-"Pause receiving thread, send/receive data manually and resume receiving "
-"thread."
-msgstr "수신 쓰레드를 잠시 멈추고, 송/수신을 수동으로 진행한 후 다시 수신 쓰레드를 켠다."
-
-#: dynamikontrol.Module.Module.manual_send_receive:3
-#: dynamikontrol.Module.Module.send:3 of
-msgid "Data to send."
-msgstr "전송할 데이터"
-
-#: dynamikontrol.Module.Module.manual_send_receive:5 of
-msgid "Length of the data to receive."
-msgstr "수신할 데이터의 길이"
-
-#: dynamikontrol.Module.Module.manual_send_receive:8 of
-msgid "(command, received data)"
-msgstr ""
-
-#: dynamikontrol.Module.Module.read_delay:1 of
-msgid "Read the data from the module using serial communication."
-msgstr "시리얼 통신을 사용하여 모듈로부터 데이터를 수신한다."
-
-#: dynamikontrol.Module.Module.read_delay:3 of
-msgid "Length of bytes. Defaults to ``1``."
-msgstr "수신한 데이터의 길이(바이트). 기본값 ``1``"
-
-#: dynamikontrol.Module.Module.read_delay:6 of
-msgid "Data from the module."
-msgstr "모듈로부터 수신한 데이터"
-
-#: dynamikontrol.Module.Module.receive:1 of
-msgid ""
-"Receive data from the module. It runs on single thread for waiting "
-"response from the module."
-msgstr "모듈로부터 데이터를 받는다. 단일 쓰레드를 사용하여 모듈로부터의 응답을 기다린다."
-
 #: dynamikontrol.Module.Module.send:1 of
 msgid "Send the data to the module"
 msgstr "모듈에 데이터를 보낸다."
+
+#: dynamikontrol.Module.Module.send:3 of
+msgid "Data to send."
+msgstr "전송할 데이터"
 
 #: ../../source/dynamikontrol.rst:24
 msgid "dynamikontrol.Motor module"
@@ -279,4 +241,30 @@ msgstr "타이머를 중지한다."
 #: ../../source/dynamikontrol.rst:40
 msgid "Module contents"
 msgstr ""
+
+#~ msgid ""
+#~ "Pause receiving thread, send/receive data "
+#~ "manually and resume receiving thread."
+#~ msgstr "수신 쓰레드를 잠시 멈추고, 송/수신을 수동으로 진행한 후 다시 수신 쓰레드를 켠다."
+
+#~ msgid "Length of the data to receive."
+#~ msgstr "수신할 데이터의 길이"
+
+#~ msgid "(command, received data)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Receive data from the module. It "
+#~ "runs on single thread for waiting "
+#~ "response from the module."
+#~ msgstr "모듈로부터 데이터를 받는다. 단일 쓰레드를 사용하여 모듈로부터의 응답을 기다린다."
+
+#~ msgid "Read the data from the module using serial communication."
+#~ msgstr "시리얼 통신을 사용하여 모듈로부터 데이터를 수신한다."
+
+#~ msgid "Length of bytes. Defaults to ``1``."
+#~ msgstr "수신한 데이터의 길이(바이트). 기본값 ``1``"
+
+#~ msgid "Data from the module."
+#~ msgstr "모듈로부터 수신한 데이터"
 

@@ -99,7 +99,7 @@ class Module(object):
         if self.debug:
             print('[*] Connected to %s, baud rate: %d' % (self.port, self.baud))
 
-        self.receive_thread = threading.Thread(target=self.receive, args=())
+        self.receive_thread = threading.Thread(target=self.__receive, args=())
         self.receive_thread._event = threading.Event()
         self.receive_thread.start()
         self.receive_thread._event.set()
@@ -119,7 +119,7 @@ class Module(object):
         self.ser.close()
 
 
-    def read_delay(self, size=1):
+    def __read_delay(self, size=1):
         """Read the data from the module using serial communication.
 
         Args:
@@ -132,7 +132,7 @@ class Module(object):
         return int.from_bytes(self.ser.read(size), byteorder='little')
 
 
-    def receive(self):
+    def __receive(self):
         """Receive data from the module. It runs on single thread for waiting response from the module.
         """
         while not self.is_connected:
@@ -142,7 +142,7 @@ class Module(object):
             while not self.__stop_thread:
                 self.receive_thread._event.wait()
                 try:
-                    data = self.read_delay()
+                    data = self.__read_delay()
 
                     if not data:
                         continue
@@ -156,21 +156,21 @@ class Module(object):
 
                     # data queue
                     self.data_queue.append(data) # header
-                    self.data_queue.append(self.read_delay()) # type
-                    self.data_queue.append(self.read_delay()) # command
+                    self.data_queue.append(self.__read_delay()) # type
+                    self.data_queue.append(self.__read_delay()) # command
 
                     # data_length
-                    data_length = self.read_delay()
+                    data_length = self.__read_delay()
                     self.data_queue.append(data_length)
 
                     # data
                     for i in range(data_length):
-                        self.data_queue.append(self.read_delay())
+                        self.data_queue.append(self.__read_delay())
 
-                    self.data_queue.append(self.read_delay()) # checksum
+                    self.data_queue.append(self.__read_delay()) # checksum
 
                     # end
-                    end = self.read_delay()
+                    end = self.__read_delay()
                     self.data_queue.append(end)
 
                     if end != 0x04:
@@ -190,7 +190,7 @@ class Module(object):
         self.__stop_thread = False
 
 
-    def manual_send_receive(self, send_data, receive_data_len):
+    def __manual_send_receive(self, send_data, receive_data_len):
         """Pause receiving thread, send/receive data manually and resume receiving thread.
 
         Args:
@@ -208,7 +208,7 @@ class Module(object):
         received_data = bytearray()
 
         for i in range(receive_data_len):
-            received_data.append(self.read_delay())
+            received_data.append(self.__read_delay())
 
         command, received_data = self.m2p.decode(received_data)
 
@@ -244,7 +244,7 @@ class Module(object):
         Returns:
             str: Serial number.
         """
-        command, serial_no = self.manual_send_receive(
+        command, serial_no = self.__manual_send_receive(
             self.p2m.set_type(0x00).set_command(0x80).set_data([]).encode(),
             self.serial_no_len + 6
         )
@@ -257,7 +257,7 @@ class Module(object):
         Returns:
             int: Module ID.
         """
-        command, id = self.manual_send_receive(
+        command, id = self.__manual_send_receive(
             self.p2m.set_type(0x00).set_command(0x81).set_data([]).encode(),
             self.id_len + 6
         )
@@ -270,7 +270,7 @@ class Module(object):
         Returns:
             datetime: Device time.
         """
-        command, device_time = self.manual_send_receive(
+        command, device_time = self.__manual_send_receive(
             self.p2m.set_type(0x00).set_command(0x82).set_data([]).encode(),
             self.time_len + 6
         )
