@@ -47,6 +47,9 @@ class Servo(object):
         if period is None:
             data = self.m.p2m.set_type(self.type).set_command(self.command['angle']).set_data([direction, angle_hex]).encode()
         else:
+            if period < 0 or period > 65535:
+                raise ValueError('Motor period value must be between 0 to 65535 in millisecond.')
+
             period_h = (period >> 8) & 0xff
             period_l = period & 0xff
 

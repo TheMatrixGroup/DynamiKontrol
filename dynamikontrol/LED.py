@@ -58,6 +58,9 @@ class LED(object):
         Args:
             color (str, optional): Color of the LED light. ``r``, ``y`` or ``g``. Defaults to ``all``.
         """
+        if color not in ['r', 'g', 'y', 'all']:
+            raise ValueError('LED light color must be one of "r", "y", "g" and "all".')
+
         if color in ['all', 'r']:
             self.__send('r', 'off')
 
@@ -74,6 +77,9 @@ class LED(object):
         Args:
             color (str, optional): Color of the LED light. ``r``, ``y`` or ``g``. Defaults to ``all``.
         """
+        if color not in ['r', 'g', 'y', 'all']:
+            raise ValueError('LED light color must be one of "r", "y", "g" and "all".')
+
         if color in ['all', 'r']:
             self.__send('r', 'on')
 
@@ -90,6 +96,9 @@ class LED(object):
         Args:
             color (str, optional): Color of the LED light. ``r``, ``y`` or ``g``. Defaults to ``all``.
         """
+        if color not in ['r', 'g', 'y', 'all']:
+            raise ValueError('LED light color must be one of "r", "y", "g" and "all".')
+
         if color in ['all', 'r']:
             self.__send('r', 'toggle')
 
@@ -108,6 +117,12 @@ class LED(object):
             on_delay (int, optional): Delay time for turned-on status. ``on_delay`` must be between ``0`` to ``65535`` in millisecond. Defaults to ``256``.
             off_delay (int, optional): Delay time for turned-off status. ``off_delay`` must be between ``0`` to ``65535`` in millisecond. Defaults to ``256``.
         """
+        if color not in ['r', 'g', 'y', 'all']:
+            raise ValueError('LED light color must be one of "r", "y", "g" and "all".')
+
+        if on_delay < 0 or on_delay > 65535 or off_delay < 0 or off_delay > 65535:
+            raise ValueError('LED on_delay or off_delay value must be between 0 to 65535 in millisecond.')
+
         if color in ['all', 'r']:
             self.__send('r', 'blink', on_delay, off_delay)
 
