@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DynamiKontrol \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-08 12:09+0900\n"
+"POT-Creation-Date: 2021-03-09 14:02+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -64,12 +64,18 @@ msgid "Color of the LED light. ``r``, ``y`` or ``g``. Defaults to ``all``."
 msgstr "LED 색상. ``r``, ``y``, ``g``. 기본값 ``all``."
 
 #: dynamikontrol.LED.LED.blink:5 of
-msgid "Turn on delay in milliseconds. Defaults to ``256``."
-msgstr "LED가 켜진 상태로 유지되는 시간, 단위 밀리세컨드. 기본값 ``256``."
+msgid ""
+"Delay time for turned-on status. ``on_delay`` must be between ``0`` to "
+"``65535`` in millisecond. Defaults to ``256``."
+msgstr ""
+"LED가 켜진 상태로 유지되는 시간, 단위 밀리세컨드. ``on_delay`` 는 반드시 ``0`` 에서 ``65536`` 사이의 값을 갖는다. 기본값 ``256``."
 
 #: dynamikontrol.LED.LED.blink:7 of
-msgid "Turn off delay in milliseconds. Defaults to ``256``."
-msgstr "LED가 꺼진 상태로 유지되는 시간, 단위 밀리세컨드. 기본값 ``256``"
+msgid ""
+"Delay time for turned-off status. ``off_delay`` must be between ``0`` to "
+"``65535`` in millisecond. Defaults to ``256``."
+msgstr ""
+"LED가 꺼진 상태로 유지되는 시간, 단위 밀리세컨드. ``on_delay`` 는 반드시 ``0`` 에서 ``65536`` 사이의 값을 갖는다. 기본값 ``256``."
 
 #: dynamikontrol.LED.LED.off:1 of
 msgid "Turn off the LED light"
@@ -212,7 +218,9 @@ msgstr ""
 msgid ""
 "Control period. ``period`` must be between ``0`` to ``65535`` in "
 "millisecond. Defaults to ``None``."
-msgstr "모터가 움직이는 시간을 정의한다, 단위 밀리세컨드. ``period`` 는 반드시 ``0`` 에서 ``65536`` 사이의 값을 갖는다. 기본값 ``None``."
+msgstr ""
+"모터가 움직이는 시간을 정의한다, 단위 밀리세컨드. ``period`` 는 반드시 ``0`` 에서 ``65536`` 사이의 값을 "
+"갖는다. 기본값 ``None``."
 
 #: ../../source/dynamikontrol.rst:32
 msgid "dynamikontrol.Timer module"

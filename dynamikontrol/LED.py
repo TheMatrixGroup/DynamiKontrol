@@ -105,8 +105,8 @@ class LED(object):
 
         Args:
             color (str, optional): Color of the LED light. ``r``, ``y`` or ``g``. Defaults to ``all``.
-            on_delay (int, optional): Turn on delay in milliseconds. Defaults to ``256``.
-            off_delay (int, optional): Turn off delay in milliseconds. Defaults to ``256``.
+            on_delay (int, optional): Delay time for turned-on status. ``on_delay`` must be between ``0`` to ``65535`` in millisecond. Defaults to ``256``.
+            off_delay (int, optional): Delay time for turned-off status. ``off_delay`` must be between ``0`` to ``65535`` in millisecond. Defaults to ``256``.
         """
         if color in ['all', 'r']:
             self.__send('r', 'blink', on_delay, off_delay)
