@@ -101,6 +101,7 @@ class Module(object):
 
         self.receive_thread = threading.Thread(target=self.__receive, args=())
         self.receive_thread._event = threading.Event()
+        self.receive_thread.daemon = True
         self.receive_thread.start()
         self.receive_thread._event.set()
 
