@@ -109,7 +109,7 @@ class Module(object):
 
 
     def disconnect(self):
-        """Close the connection of the module.
+        """Close the connection of the module. Must include ``module.disconnect()`` at the end of the code so that module can close connection properly.
         """
         time.sleep(1)
         if self.debug:

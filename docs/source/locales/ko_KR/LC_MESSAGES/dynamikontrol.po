@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DynamiKontrol \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-09 14:02+0900\n"
+"POT-Creation-Date: 2021-03-09 14:20+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,14 +68,16 @@ msgid ""
 "Delay time for turned-on status. ``on_delay`` must be between ``0`` to "
 "``65535`` in millisecond. Defaults to ``256``."
 msgstr ""
-"LED가 켜진 상태로 유지되는 시간, 단위 밀리세컨드. ``on_delay`` 는 반드시 ``0`` 에서 ``65536`` 사이의 값을 갖는다. 기본값 ``256``."
+"LED가 켜진 상태로 유지되는 시간, 단위 밀리세컨드. ``on_delay`` 는 반드시 ``0`` 에서 ``65536`` 사이의 "
+"값을 갖는다. 기본값 ``256``."
 
 #: dynamikontrol.LED.LED.blink:7 of
 msgid ""
 "Delay time for turned-off status. ``off_delay`` must be between ``0`` to "
 "``65535`` in millisecond. Defaults to ``256``."
 msgstr ""
-"LED가 꺼진 상태로 유지되는 시간, 단위 밀리세컨드. ``on_delay`` 는 반드시 ``0`` 에서 ``65536`` 사이의 값을 갖는다. 기본값 ``256``."
+"LED가 꺼진 상태로 유지되는 시간, 단위 밀리세컨드. ``on_delay`` 는 반드시 ``0`` 에서 ``65536`` 사이의 "
+"값을 갖는다. 기본값 ``256``."
 
 #: dynamikontrol.LED.LED.off:1 of
 msgid "Turn off the LED light"
@@ -112,8 +114,10 @@ msgid "Connect to the module."
 msgstr "모듈에 연결한다."
 
 #: dynamikontrol.Module.Module.disconnect:1 of
-msgid "Close the connection of the module."
-msgstr "모듈과 연결을 끊는다."
+msgid ""
+"Close the connection of the module. Must include ``module.disconnect()`` "
+"at the end of the code so that module can close connection properly."
+msgstr "모듈과 연결을 끊는다. 코드의 마지막에 반드시 ``module.disconnect()`` 를 호출해야 정상적으로 연결이 종료된다."
 
 #: dynamikontrol.Module.Module.get_id:1 of
 msgid "Get ID of the connected module."
