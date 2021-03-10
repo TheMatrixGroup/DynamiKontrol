@@ -1,0 +1,36 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, Taehee Lee
+# This file is distributed under the same license as the DynamiKontrol
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: DynamiKontrol \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-10 21:17+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#: ../../source/dial.md:1
+msgid "Dial GUI"
+msgstr "다이얼 GUI"
+
+#: ../../source/dial.md:3
+msgid "Simple dial GUI example using PyQt5."
+msgstr "PyQt5를 이용한 간단한 다이얼 GUI"
+
+#: ../../source/dial.md:7
+msgid "Install PyQt5"
+msgstr "PyQt5 설치"
+
+#: ../../source/dial.md:13
+msgid "Source Code"
+msgstr "소스코드"
+
