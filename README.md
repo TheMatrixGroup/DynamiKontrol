@@ -30,10 +30,10 @@ while True:
 
 ## Examples
 
-| Example | Source Code |
-| --- | --- |
-| Face Tracking Camera | [Link](https://dynamikontrol.readthedocs.io/en/latest/face_tracking_camera.html) |
-| Lunch Roulette | [Link](https://dynamikontrol.readthedocs.io/en/latest/lunch_roulette.html) |
+| Example | Demo | Source Code |
+| --- | --- | --- |
+| Face Tracking Camera | [YouTube](https://youtu.be/AhYo2zR0xCU) | [Link](https://dynamikontrol.readthedocs.io/en/latest/face_tracking_camera.html) |
+| Lunch Roulette | ![](docs/source/_static/lunch_roulette.gif) | [Link](https://dynamikontrol.readthedocs.io/en/latest/lunch_roulette.html) |
 
 ## Documentation
 
