@@ -33,6 +33,7 @@ while True:
 | Example | Source Code |
 | --- | --- |
 | Face Tracking Camera | [Link](https://dynamikontrol.readthedocs.io/en/latest/face_tracking_camera.html) |
+| Lunch Roulette | [Link](https://dynamikontrol.readthedocs.io/en/latest/lunch_roulette.html) |
 
 ## Documentation
 
