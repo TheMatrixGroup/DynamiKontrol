@@ -20,6 +20,7 @@ DynamiKontrol is a API for controlling DynamiKontrol module as motors, LEDs or s
    :caption: Examples:
 
    face_tracking_camera
+   lunch_roulette
 
 Indices and tables
 ==================

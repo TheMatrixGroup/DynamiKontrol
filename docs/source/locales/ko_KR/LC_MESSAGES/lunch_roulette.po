@@ -1,0 +1,32 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, Taehee Lee
+# This file is distributed under the same license as the DynamiKontrol
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: DynamiKontrol \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-10 12:38+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#: ../../source/lunch_roulette.md:1
+msgid "Lunch Roulette"
+msgstr "점심 골라주는 기계"
+
+#: ../../source/lunch_roulette.md:3
+msgid "A Machine select your lunch menu with no worries."
+msgstr "오늘 점심 뭐 먹지? 이제 걱정은 그만!"
+
+#: ../../source/lunch_roulette.md:7
+msgid "Source Code"
+msgstr "소스코드"
+
