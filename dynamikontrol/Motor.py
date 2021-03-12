@@ -1,3 +1,5 @@
+import time
+
 class Servo(object):
     """Servo motor submodule class.
 
@@ -30,7 +32,9 @@ class Servo(object):
         self.type = 0x03
         self.command = {
             'angle': 0x00,
-            'angle_period': 0x01
+            'angle_period': 0x01,
+            'set_offset': 0x02,
+            'get_offset': 0x81
         }
 
 
@@ -57,6 +61,42 @@ class Servo(object):
         self.m.send(data)
 
 
+    def get_offset(self):
+        """Get offset of the motor.
+
+        Returns:
+            float: Offset of the motor in degree.
+        """
+        data = self.m.p2m.set_type(self.type).set_command(self.command['get_offset']).set_data([]).encode()
+
+        command, received_data = self.m._manual_send_receive(data, 3 + 6)
+
+        direction = 1 if received_data[0] == 0 else -1
+        angle_int = received_data[1]
+        angle_point = received_data[2] / 10.
+
+        return direction * (angle_int + angle_point)
+
+
+    def set_offset(self, angle):
+        """Set offset of the motor. If the motor angle is inclined slightly even angle set to 0, you can adjust offset of the motor manually.
+
+        Args:
+            angle (float): Offset of the motor in degree. e.g) 17.5
+        """
+        direction = 0x00 if angle >= 0 else 0x01
+        angle_hex = abs(angle)
+        angle_int = int(angle_hex)
+        angle_point = int(round(angle_hex - angle_int, 1) * 10)
+
+        data = self.m.p2m.set_type(self.type).set_command(self.command['set_offset']).set_data([direction, angle_int, angle_point]).encode()
+        self.m.send(data)
+
+        time.sleep(0.1)
+        self.angle(0)
+        time.sleep(0.1)
+
+
 class Motor(object):
     def __init__(self, module):
         self.m = module
@@ -66,3 +106,9 @@ class Motor(object):
 
     def angle(self, *args, **kwargs):
         self.motor.angle(*args, **kwargs)
+
+    def get_offset(self, *args, **kwargs):
+        return self.motor.get_offset(*args, **kwargs)
+
+    def set_offset(self, *args, **kwargs):
+        self.motor.set_offset(*args, **kwargs)

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DynamiKontrol \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-12 12:42+0900\n"
+"POT-Creation-Date: 2021-03-12 13:27+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,6 +44,7 @@ msgstr "LED 서브 모듈 클래스."
 #: dynamikontrol.LED.LED.on dynamikontrol.LED.LED.toggle
 #: dynamikontrol.Module.Module dynamikontrol.Module.Module.send
 #: dynamikontrol.Motor.Servo dynamikontrol.Motor.Servo.angle
+#: dynamikontrol.Motor.Servo.set_offset
 #: dynamikontrol.Timer.Timer.callback_after
 #: dynamikontrol.Timer.Timer.callback_at of
 msgid "Parameters"
@@ -124,7 +125,7 @@ msgstr "연결된 모듈의 기기 펌웨어 버전을 가져온다."
 
 #: dynamikontrol.Module.Module.get_fw_version
 #: dynamikontrol.Module.Module.get_id dynamikontrol.Module.Module.get_serial_no
-#: dynamikontrol.Module.Module.get_time of
+#: dynamikontrol.Module.Module.get_time dynamikontrol.Motor.Servo.get_offset of
 msgid "Returns"
 msgstr ""
 
@@ -134,7 +135,7 @@ msgstr "모듈의 펌웨어 버전."
 
 #: dynamikontrol.Module.Module.get_fw_version
 #: dynamikontrol.Module.Module.get_id dynamikontrol.Module.Module.get_serial_no
-#: dynamikontrol.Module.Module.get_time of
+#: dynamikontrol.Module.Module.get_time dynamikontrol.Motor.Servo.get_offset of
 msgid "Return type"
 msgstr ""
 
@@ -197,6 +198,24 @@ msgid ""
 msgstr ""
 "모터가 움직이는 시간을 정의한다, 단위 밀리세컨드. ``period`` 는 반드시 ``0`` 에서 ``65536`` 사이의 값을 "
 "갖는다. 기본값 ``None``."
+
+#: dynamikontrol.Motor.Servo.get_offset:1 of
+msgid "Get offset of the motor."
+msgstr "모터의 오프셋 각도를 가져온다."
+
+#: dynamikontrol.Motor.Servo.get_offset:3 of
+msgid "Offset of the motor in degree."
+msgstr "모터의 오프셋, 단위 도."
+
+#: dynamikontrol.Motor.Servo.set_offset:1 of
+msgid ""
+"Set offset of the motor. If the motor angle is inclined slightly even "
+"angle set to 0, you can adjust offset of the motor manually."
+msgstr "모터의 오프셋 각도를 조절한다. 만약 모터의 각도를 0으로 설정했는데도 불구하고 모터의 각도가 어느 한 쪽으로 기울어져 있으면 수동으로 오프셋 각도를 조절할 수 있다."
+
+#: dynamikontrol.Motor.Servo.set_offset:3 of
+msgid "Offset of the motor in degree. e.g) 17.5"
+msgstr "모터의 오프셋, 단위 도. 예) 17.5"
 
 #: ../../source/dynamikontrol.rst:32
 msgid "dynamikontrol.Timer module"
