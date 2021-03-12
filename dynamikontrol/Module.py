@@ -198,7 +198,7 @@ class Module(object):
         self.__stop_thread = False
 
 
-    def __manual_send_receive(self, send_data, receive_data_len):
+    def _manual_send_receive(self, send_data, receive_data_len):
         """Pause receiving thread, send/receive data manually and resume receiving thread.
 
         Args:
@@ -254,7 +254,7 @@ class Module(object):
         Returns:
             str: Serial number.
         """
-        command, serial_no = self.__manual_send_receive(
+        command, serial_no = self._manual_send_receive(
             self.p2m.set_type(0x00).set_command(0x80).set_data([]).encode(),
             self.serial_no_len + 6
         )
@@ -267,7 +267,7 @@ class Module(object):
         Returns:
             int: Module ID.
         """
-        command, id = self.__manual_send_receive(
+        command, id = self._manual_send_receive(
             self.p2m.set_type(0x00).set_command(0x81).set_data([]).encode(),
             self.id_len + 6
         )
@@ -280,7 +280,7 @@ class Module(object):
         Returns:
             datetime: Device time.
         """
-        command, device_time = self.__manual_send_receive(
+        command, device_time = self._manual_send_receive(
             self.p2m.set_type(0x00).set_command(0x82).set_data([]).encode(),
             self.time_len + 6
         )
@@ -299,7 +299,7 @@ class Module(object):
         Returns:
             str: Device firmware version.
         """
-        command, fw_data = self.__manual_send_receive(
+        command, fw_data = self._manual_send_receive(
             self.p2m.set_type(0x00).set_command(0x83).set_data([]).encode(),
             self.fw_version_len + 6
         )
