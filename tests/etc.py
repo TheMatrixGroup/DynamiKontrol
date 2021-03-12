@@ -12,4 +12,6 @@ print('ID: %s' % (m.get_id(), ))
 
 print('Device time: %s' % (m.get_time(), ))
 
+print('FW version: %s' % (m.get_fw_version(),))
+
 m.disconnect()

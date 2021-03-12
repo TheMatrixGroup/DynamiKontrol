@@ -41,6 +41,9 @@ class Module(object):
         self.p2m = PC2Module()
         self.m2p = Module2PC()
 
+        self.fw_type = 0
+        self.fw_version = None
+
         self.serial_no = None
         self.port = None
         self.ser = None
@@ -51,6 +54,7 @@ class Module(object):
         self.serial_no_len = 8
         self.id_len = 1
         self.time_len = 8
+        self.fw_version_len = 8
         self.manual_delay = 0.1
         self.data_queue = bytearray()
 
@@ -98,6 +102,9 @@ class Module(object):
 
         if self.debug:
             print('[*] Connected to %s, baud rate: %d' % (self.port, self.baud))
+
+        self.get_fw_version()
+        time.sleep(0.1)
 
         self.receive_thread = threading.Thread(target=self.__receive, args=())
         self.receive_thread._event = threading.Event()
@@ -201,7 +208,8 @@ class Module(object):
         Returns:
             tuple: (command, received data)
         """
-        self.receive_thread._event.clear() # pause receive thread
+        if hasattr(self, 'receive_thread'):
+            self.receive_thread._event.clear() # pause receive thread
 
         self.send(send_data)
         time.sleep(self.manual_delay)
@@ -213,7 +221,8 @@ class Module(object):
 
         command, received_data = self.m2p.decode(received_data)
 
-        self.receive_thread._event.set() # resume receive thread
+        if hasattr(self, 'receive_thread'):
+            self.receive_thread._event.set() # resume receive thread
 
         return command, received_data
 
@@ -282,3 +291,23 @@ class Module(object):
         now = datetime.datetime.now()
 
         return datetime.datetime(now.year, now.month, now.day, h, m, s, ms)
+
+
+    def get_fw_version(self):
+        """Get firmware version of the connected module.
+
+        Returns:
+            str: Device firmware version.
+        """
+        command, fw_data = self.__manual_send_receive(
+            self.p2m.set_type(0x00).set_command(0x83).set_data([]).encode(),
+            self.fw_version_len + 6
+        )
+
+        self.fw_type = fw_data[0]
+
+        fw_major_version = int(fw_data[1:4].decode('utf-8'))
+        fw_minor_version = fw_data[5:8].decode('utf-8')
+        self.fw_version = '%s.%s' % (fw_major_version, fw_minor_version)
+
+        return self.fw_version

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DynamiKontrol \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-09 14:48+0900\n"
+"POT-Creation-Date: 2021-03-12 12:42+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -118,23 +118,33 @@ msgid ""
 "at the end of the code so that module can close connection properly."
 msgstr "모듈과 연결을 끊는다. 코드의 마지막에 반드시 ``module.disconnect()`` 를 호출해야 정상적으로 연결이 종료된다."
 
-#: dynamikontrol.Module.Module.get_id:1 of
-msgid "Get ID of the connected module."
-msgstr "연결된 모듈의 ID를 가져온다."
+#: dynamikontrol.Module.Module.get_fw_version:1 of
+msgid "Get firmware version of the connected module."
+msgstr "연결된 모듈의 기기 펌웨어 버전을 가져온다."
 
+#: dynamikontrol.Module.Module.get_fw_version
 #: dynamikontrol.Module.Module.get_id dynamikontrol.Module.Module.get_serial_no
 #: dynamikontrol.Module.Module.get_time of
 msgid "Returns"
 msgstr ""
 
-#: dynamikontrol.Module.Module.get_id:3 of
-msgid "Module ID."
-msgstr "모듈의 ID"
+#: dynamikontrol.Module.Module.get_fw_version:3 of
+msgid "Device firmware version."
+msgstr "모듈의 펌웨어 버전."
 
+#: dynamikontrol.Module.Module.get_fw_version
 #: dynamikontrol.Module.Module.get_id dynamikontrol.Module.Module.get_serial_no
 #: dynamikontrol.Module.Module.get_time of
 msgid "Return type"
 msgstr ""
+
+#: dynamikontrol.Module.Module.get_id:1 of
+msgid "Get ID of the connected module."
+msgstr "연결된 모듈의 ID를 가져온다."
+
+#: dynamikontrol.Module.Module.get_id:3 of
+msgid "Module ID."
+msgstr "모듈의 ID."
 
 #: dynamikontrol.Module.Module.get_serial_no:1 of
 msgid "Get serial number of the connected module."
