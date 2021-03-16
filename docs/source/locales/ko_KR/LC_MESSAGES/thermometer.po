@@ -1,0 +1,42 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, Taehee Lee
+# This file is distributed under the same license as the DynamiKontrol
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: DynamiKontrol \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-16 15:08+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#: ../../source/thermometer.md:1
+msgid "Thermometer"
+msgstr "온도계"
+
+#: ../../source/thermometer.md:3
+msgid ""
+"Simple IoT analogue thermometer using weather API. It is around 13 "
+"degrees Celsius in the image below."
+msgstr "날씨 API를 사용하여 간단한 IoT 아날로그 온도계를 만들 수 있습니다. 아래 그림은 섭씨 13도 정도를 나타냅니다."
+
+#: ../../source/thermometer.md:7
+msgid "You can download a graduated ruler from this link."
+msgstr "눈금자를 아래 링크에서 다운로드 받으세요."
+
+#: ../../source/thermometer.md:9
+msgid "https://github.com/TheMatrixGroup/DynamiKontrol/raw/master/examples/thermometer.pdf"
+msgstr ""
+
+#: ../../source/thermometer.md:11
+msgid "Source Code"
+msgstr "소스코드"
+
