@@ -36,6 +36,7 @@ while True:
 | Lunch Roulette | ![](docs/source/_static/lunch_roulette.gif) | [Link](https://dynamikontrol.readthedocs.io/en/latest/lunch_roulette.html) |
 | Dial GUI | ![](docs/source/_static/dial_gui.gif) | [Link](https://dynamikontrol.readthedocs.io/en/latest/dial_gui.html) |
 | IoT Thermometer | <img src="docs/source/_static/thermometer.jpg" width="270px"> | [Link](https://dynamikontrol.readthedocs.io/en/latest/thermometer.html) |
+| IoT Door Lock | <img src="docs/source/_static/iot_door_lock.gif" width="270px"> | [Link](https://dynamikontrol.readthedocs.io/en/latest/iot_door_lock.html) |
 
 ## Documentation
 
