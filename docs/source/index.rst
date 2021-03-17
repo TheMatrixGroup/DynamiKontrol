@@ -23,6 +23,7 @@ DynamiKontrol is a API for controlling DynamiKontrol module as motors, LEDs or s
    lunch_roulette
    dial_gui
    thermometer
+   iot_door_lock
 
 Indices and tables
 ==================
