@@ -7,6 +7,7 @@ import datetime
 
 from dynamikontrol.Protocol import Module2PC, PC2Module
 from dynamikontrol.LED import LED
+from dynamikontrol.BaseLED import BaseLED
 from dynamikontrol.Motor import Motor
 from dynamikontrol.helpers.helper import print_bytearray
 
@@ -89,6 +90,7 @@ class Module(object):
         self.connect()
 
         self.led = LED(module=self)
+        self.base_led = BaseLED(module=self)
         self.motor = Motor(module=self)
 
 

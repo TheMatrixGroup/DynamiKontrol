@@ -5,7 +5,21 @@ from dynamikontrol import Module, BaseLED
 import time
 
 module = Module(debug=True)
-base_led = BaseLED(module=module)
+base_led = module.base_led
+
+# Mix
+start_time = time.time()
+while True:
+    if time.time() - start_time > 5:
+        break
+
+    for i in range(100):
+        base_led.mix(rgb=(i, i, 100-i))
+        time.sleep(0.02)
+
+    for i in range(100):
+        base_led.mix(rgb=(100-i, 100-i, i))
+        time.sleep(0.02)
 
 # All on - off
 start_time = time.time()

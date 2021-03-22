@@ -6,13 +6,16 @@ class BaseLED(object):
         self.command = {
             'r': 0x00,
             'g': 0x01,
-            'b': 0x02
+            'b': 0x02,
+            'mix': 0x03,
         }
         self.mode = {
             'off': 0x00,
             'on': 0x01,
             'toggle': 0x02,
         }
+
+        self.mix_on_time = 10 # ms
 
 
     def __send(self, color, mode, on_delay=0, off_delay=0):
@@ -69,3 +72,18 @@ class BaseLED(object):
 
         if color in ['all', 'b']:
             self.__send('b', 'toggle')
+
+
+    def mix(self, rgb):
+        """Mix the color of base LED light.
+
+        Args:
+            rgb ([tuple]): Intensity of LED lights. Range from 0 to 100. e.g) (100, 0, 0) red light
+        """
+        r, g, b = rgb
+
+        on_low_bit = self.mix_on_time & 0xFF
+        on_high_bit = (self.mix_on_time >> 8) & 0xFF
+
+        data = self.m.p2m.set_type(self.type).set_command(self.command['mix']).set_data([on_high_bit, on_low_bit, r, g, b]).encode()
+        self.m.send(data)
