@@ -1,11 +1,16 @@
 import setuptools
+import sys
 
-with open("README.md", "r", encoding="utf-8") as fh:
-    long_description = fh.read()
+if sys.version_info[0] > 2:
+    with open("README.md", "r", encoding="utf-8") as fh:
+        long_description = fh.read()
+else:
+    with open("README.md", "r") as fh:
+        long_description = fh.read()
 
 setuptools.setup(
     name="DynamiKontrol",
-    version="0.0.7",
+    version="0.1.0",
     author="Taehee Lee",
     author_email="kairess87@gmail.com",
     description="DynamiKontrol Python API",
@@ -22,5 +27,5 @@ setuptools.setup(
         "Topic :: System :: Hardware :: Hardware Drivers"
     ],
     packages=setuptools.find_packages(),
-    python_requires=">=3.6",
+    python_requires=">=3.4.2",
 )
