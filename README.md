@@ -1,8 +1,14 @@
 # DynamiKontrol
 
-**You can be the alpha tester!**
+**You can be the alpha tester! Please email us matrix.ai.solution@gmail.com**
 
-DynamiKontol is Python API for controlling motors and hardware modules. You can integrate your Python code such as TensorFlow, PyTorch or OpenCV with hardwares.
+DynamiKontol is Python API for controlling motors and hardware modules. You can integrate into your Python code such as TensorFlow, PyTorch or OpenCV with hardwares easily.
+
+Also you can control multiple DK modules on your PC, Raspberry Pi or NVIDIA Jetson.
+
+<p align="center">
+    <img src="docs/source/_static/dk_module.png" width="270px">
+</p>
 
 ## Getting Started
 
@@ -21,10 +27,12 @@ time.sleep(2)
 while True:
     # move 45 degree in clockwise
     module.motor.angle(angle=45)
+    module.led.on(color='r')
     time.sleep(2)
 
     # move 45 degree in counter clockwise during 5000 milliseconds
     module.motor.angle(angle=-45, period=5000)
+    module.led.on(color='g')
     time.sleep(5)
 ```
 
@@ -47,6 +55,8 @@ while True:
 | Korean | https://dynamikontrol.readthedocs.io/ko/latest/ |
 
 ---
+
+DynamiKontrol website https://dk.m47rix.com
 
 Developed and designed by [The Matrix](https://www.m47rix.com) (c) 2021
 

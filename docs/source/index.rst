@@ -6,7 +6,11 @@
 DynamiKontrol Python API
 ========================
 
-DynamiKontrol is a API for controlling DynamiKontrol module as motors, LEDs or so on. You can find our modules at https://www.m47rix.com. Please contact us matrix.ai.solution@gmail.com
+.. image:: _static/dk_module.png
+   :width: 270
+   :align: center
+
+DynamiKontrol is a API for controlling DynamiKontrol module as motors, LEDs or so on. You can find our modules at https://dk.m47rix.com. Please contact us matrix.ai.solution@gmail.com
 
 .. toctree::
    :maxdepth: 2
