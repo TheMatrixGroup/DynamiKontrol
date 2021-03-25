@@ -54,6 +54,28 @@ while True:
 | English | https://dynamikontrol.readthedocs.io/en/latest/ |
 | Korean | https://dynamikontrol.readthedocs.io/ko/latest/ |
 
+## Supported Devices
+
+- PC/Laptop
+- Raspberry Pi
+- NVIDIA Jetson
+- and all devices which support serial communication
+
+### Operating System
+
+- Windows
+- MacOS
+- Linux
+- Ubuntu
+
+## Block-Based Coding
+
+Google's Blockly library makes it easier. Have fun with DynamiKontrol using interlocking blocks.
+
+<img src="docs/source/_static/coding_block.png" width="270px">
+
+https://thematrixgroup.github.io/?lang=en
+
 ---
 
 DynamiKontrol website https://dk.m47rix.com
