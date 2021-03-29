@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DynamiKontrol \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-07 17:06+0900\n"
+"POT-Creation-Date: 2021-03-29 16:30+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,14 +23,34 @@ msgid "Installation"
 msgstr "설치"
 
 #: ../../source/installation.md:3
-msgid "Installation in pip"
-msgstr "pip을 이용한 설치"
+msgid "Install Python"
+msgstr "파이썬 설치"
 
 #: ../../source/installation.md:5
-msgid "To install the library via pip, simply execute:"
-msgstr "pip을 이용해 설치하려면 아래 명령어를 입력하세요:"
+msgid "First download and install Python from here:"
+msgstr "먼저 아래 링크에서 파이썬을 다운로드 받고 설치합니다"
+
+#: ../../source/installation.md:7
+msgid "https://www.python.org/downloads"
+msgstr ""
+
+#: ../../source/installation.md:9
+msgid "or use Anaconda:"
+msgstr "또는 아나콘다를 사용하여 설치합니다"
 
 #: ../../source/installation.md:11
+msgid "https://www.anaconda.com/products/individual"
+msgstr ""
+
+#: ../../source/installation.md:13
+msgid "Install DynamiKontrol Package in pip"
+msgstr "pip을 이용한 DynamiKontrol 패키지 설치"
+
+#: ../../source/installation.md:15
+msgid "To install DynamiKontrol package via pip, simply execute in terminal:"
+msgstr "pip을 이용해 DynamiKontrol 패키지를 설치하려면 터미널 창에서 아래 명령어를 입력하세요:"
+
+#: ../../source/installation.md:21
 msgid "This installs the latest version from pypi."
 msgstr "pypi에서 가장 최신 버전의 라이브러리를 설치합니다."
 
