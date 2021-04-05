@@ -38,6 +38,8 @@ class Module(object):
 
     def __init__(self, serial_no=None, debug=False):
         self.serial_no = serial_no
+        if self.serial_no is not None:
+            self.serial_no = self.serial_no.lower()
         self.debug = debug
         self.p2m = PC2Module()
         self.m2p = Module2PC()
@@ -45,7 +47,6 @@ class Module(object):
         self.fw_type = 0
         self.fw_version = None
 
-        self.serial_no = serial_no
         self.port = None
         self.ser = None
         self.baud = 115200
