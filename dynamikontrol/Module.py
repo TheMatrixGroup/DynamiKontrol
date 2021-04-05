@@ -45,7 +45,7 @@ class Module(object):
         self.fw_type = 0
         self.fw_version = None
 
-        self.serial_no = None
+        self.serial_no = serial_no
         self.port = None
         self.ser = None
         self.baud = 115200
@@ -79,7 +79,7 @@ class Module(object):
                 continue
 
             start_idx = desc.find('ser=')
-            serial_no_str = desc[start_idx+4:start_idx+4+8]
+            serial_no_str = desc[start_idx+4:start_idx+4+self.serial_no_len]
 
             if self.serial_no is not None and self.serial_no != serial_no_str:
                 continue
