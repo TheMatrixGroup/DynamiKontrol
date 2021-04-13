@@ -6,7 +6,7 @@
 DynamiKontrol Python API
 ========================
 
-.. image:: _static/dk_module.png
+.. image:: _static/dk_module2.png
    :alt: A DynamiKontrol module
    :width: 270
    :align: center

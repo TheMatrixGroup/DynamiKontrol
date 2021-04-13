@@ -1,13 +1,13 @@
 # DynamiKontrol
 
-**You can be the alpha tester! Please email us matrix.ai.solution@gmail.com**
+**If you want to buy this module, please email us matrix.ai.solution@gmail.com**
 
 DynamiKontol is Python API for controlling motors and hardware modules. You can integrate into your Python code such as TensorFlow, PyTorch or OpenCV with hardwares easily.
 
 Also you can control multiple DK modules on your PC, Raspberry Pi or NVIDIA Jetson.
 
 <p align="center">
-    <img src="docs/source/_static/dk_module.png" width="270px">
+    <img src="docs/source/_static/dk_module2.png" width="270px">
 </p>
 
 ## Getting Started
@@ -70,7 +70,7 @@ while True:
 
 ## Block-Based Coding
 
-Google's Blockly library makes it easier. Have fun with DynamiKontrol using interlocking blocks.
+Google's Blockly library makes it easier. Have fun with DynamiKontrol using interlocking blocks. (Support MacOS and Linux only. Windows comming soon)
 
 <img src="docs/source/_static/coding_block.png" width="270px">
 
@@ -78,7 +78,9 @@ https://thematrixgroup.github.io/?lang=en
 
 ---
 
-DynamiKontrol website https://dk.m47rix.com
+- DynamiKontrol website https://dk.m47rix.com
+- 구매 링크 https://smartstore.naver.com/dynamikontrol
+- 네이버 카페 (질문과답변, 예제) https://cafe.naver.com/dynamikontrol
 
 Developed and designed by [The Matrix](https://www.m47rix.com) (c) 2021
 

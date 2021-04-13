@@ -38,7 +38,7 @@ msgid ""
 msgstr ""
 "DynamiKontrol API는 DynamiKontrol 모듈의 모터, LED와 같은 하드웨어를 제어할 수 있는 사용하기 쉬운 "
 "파이썬 API입니다. 구매를 원하시면 https://dk.m47rix.com 또는 "
-"matrix.ai.solution@gmail.com 으로 문의주세요."
+"https://smartstore.naver.com/dynamikontrol 으로 문의주세요."
 
 #: ../../source/index.rst:33
 msgid "Indices and tables"
