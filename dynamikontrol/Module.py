@@ -61,6 +61,9 @@ class Module(object):
         self.manual_delay = 0.1
         self.data_queue = bytearray()
 
+        self.sequence = []
+        self.sequence_id = 0
+
         self.is_connected = False
 
         ports = list_ports.comports(include_links=True)
@@ -157,12 +160,12 @@ class Module(object):
                 time.sleep(self.__receive_thread_delay)
 
                 try:
-                    data = self.__read_delay()
+                    header = self.__read_delay()
 
-                    if not data:
+                    if not header:
                         continue
 
-                    if not self.__is_header_defined and (data == 0x06 or data == 0x15): # 0x06 ACK, 0x15 NACK
+                    if not self.__is_header_defined and (header == 0x06 or header == 0x15): # 0x06 ACK, 0x15 NACK
                         self.__is_header_defined = True
                         self.data_queue = bytearray()
 
@@ -170,7 +173,7 @@ class Module(object):
                         continue
 
                     # data queue
-                    self.data_queue.append(data) # header
+                    self.data_queue.append(header) # header
                     self.data_queue.append(self.__read_delay()) # type
                     self.data_queue.append(self.__read_delay()) # command
 
