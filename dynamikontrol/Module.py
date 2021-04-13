@@ -31,6 +31,7 @@ class Module(object):
         debug (bool): print debug messages.
     """
     __serial_receive_delay = 0
+    __receive_thread_delay = 0.001
     __stop_thread = False
 
     # communication
@@ -152,6 +153,9 @@ class Module(object):
 
             while not self.__stop_thread:
                 self.receive_thread._event.wait()
+
+                time.sleep(self.__receive_thread_delay)
+
                 try:
                     data = self.__read_delay()
 
