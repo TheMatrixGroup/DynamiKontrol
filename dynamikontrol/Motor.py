@@ -101,8 +101,10 @@ class Motor(object):
     def __init__(self, module):
         self.m = module
 
-        # TODO: if statement by m.pid
-        self.motor = Servo(module=self.m)
+        if self.m.pid == '0001':
+            self.motor = Servo(module=self.m)
+        elif self.m.pid == '0002':
+            raise NotImplementedError('Speed motor module is not implemented yet.')
 
     def angle(self, *args, **kwargs):
         self.motor.angle(*args, **kwargs)

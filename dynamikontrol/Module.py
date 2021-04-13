@@ -54,6 +54,7 @@ class Module(object):
         self.vid = None
         self.pid = None
         self.avail_vids = ['3476']
+        self.avail_pids = ['0001', '0002'] # [Angle, Speed]
         self.serial_no_len = 8
         self.id_len = 1
         self.time_len = 8
@@ -77,7 +78,7 @@ class Module(object):
             start_idx = desc.find('vid:pid=')
             self.vid, self.pid = desc[start_idx+8:start_idx+8+9].split(':')
 
-            if self.vid not in self.avail_vids:
+            if self.vid not in self.avail_vids or self.pid not in self.avail_pids:
                 continue
 
             start_idx = desc.find('ser=')
@@ -192,7 +193,7 @@ class Module(object):
                         self.__is_header_defined = False
                         raise ValueError('Module invalid end byte')
 
-                    data = self.m2p.decode(self.data_queue)
+                    # command, data = self.m2p.decode(self.data_queue)
 
                     if self.debug:
                         print('[*] Recv %s' % (print_bytearray(self.data_queue),))
