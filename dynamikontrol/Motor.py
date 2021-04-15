@@ -48,10 +48,10 @@ class Servo(object):
 
         Args:
             angle (int): If ``angle > 0`` moves along clockwise, otherwise moves along counter clockwise. ``angle`` must be between ``-85`` to ``85`` in degrees.
-            period (float): Control period. ``period`` must be between ``0.0`` to ``65.0`` in second. Defaults to ``None``.
-            func (function): Callback function when motor has been stopped. Defaults to ``None``.
-            args (tuple): args for callback function. Defaults to ``()``.
-            kwargs (dict): kwargs for callback function. Defaults to ``{}``.
+            period (float, optional): Control period. ``period`` must be between ``0.0`` to ``65.0`` in second. Defaults to ``None``.
+            func (function, optional): Callback function when motor has been stopped. Defaults to ``None``.
+            args (tuple, optional): args for callback function. Defaults to ``()``.
+            kwargs (dict, optional): kwargs for callback function. Defaults to ``{}``.
         """
         direction = 0x00 if angle >= 0 else 0x01
         angle_hex = abs(angle)

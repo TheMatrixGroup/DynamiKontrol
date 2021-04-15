@@ -114,8 +114,8 @@ class LED(object):
 
         Args:
             color (str, optional): Color of the LED light. ``r``, ``y`` or ``g``. Defaults to ``all``.
-            on_delay (int, optional): Delay time for turned-on status. ``on_delay`` must be between ``0.0`` to ``65.0`` in second. Defaults to ``0.256``.
-            off_delay (int, optional): Delay time for turned-off status. ``off_delay`` must be between ``0.0`` to ``65.0`` in second. Defaults to ``0.256``.
+            on_delay (float, optional): Delay time for turned-on status. ``on_delay`` must be between ``0.0`` to ``65.0`` in second. Defaults to ``0.256``.
+            off_delay (float, optional): Delay time for turned-off status. ``off_delay`` must be between ``0.0`` to ``65.0`` in second. Defaults to ``0.256``.
         """
         if color not in ['r', 'g', 'y', 'all']:
             raise ValueError('LED light color must be one of "r", "y", "g" and "all".')
