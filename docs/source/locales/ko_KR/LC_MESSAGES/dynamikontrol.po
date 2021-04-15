@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DynamiKontrol \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-15 16:51+0900\n"
+"POT-Creation-Date: 2021-04-15 17:07+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,7 @@ msgstr "LED 서브 모듈 클래스."
 msgid "Parameters"
 msgstr ""
 
-#: dynamikontrol.LED.LED:23 dynamikontrol.Motor.Servo:23 of
+#: dynamikontrol.LED.LED:23 dynamikontrol.Motor.Servo:26 of
 msgid "Module object."
 msgstr "Module 객체"
 
@@ -193,10 +193,10 @@ msgstr ""
 
 #: dynamikontrol.Motor.Servo.angle:5 of
 msgid ""
-"Control period. ``period`` must be between ``0`` to ``65535`` in "
-"millisecond. Defaults to ``None``."
+"Control period. ``period`` must be between ``0.0`` to ``65.0`` in second."
+" Defaults to ``None``."
 msgstr ""
-"모터가 움직이는 시간을 정의한다, 단위 밀리세컨드. ``period`` 는 반드시 ``0`` 에서 ``65536`` 사이의 값을 "
+"모터가 움직이는 시간을 정의한다, 단위 초. ``period`` 는 반드시 ``0.0`` 에서 ``65.0`` 사이의 값을 "
 "갖는다. 기본값 ``None``."
 
 #: dynamikontrol.Motor.Servo.angle:7 of
