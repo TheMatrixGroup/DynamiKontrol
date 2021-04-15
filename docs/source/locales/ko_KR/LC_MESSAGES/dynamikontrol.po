@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DynamiKontrol \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-12 13:27+0900\n"
+"POT-Creation-Date: 2021-04-15 16:51+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -199,6 +199,18 @@ msgstr ""
 "모터가 움직이는 시간을 정의한다, 단위 밀리세컨드. ``period`` 는 반드시 ``0`` 에서 ``65536`` 사이의 값을 "
 "갖는다. 기본값 ``None``."
 
+#: dynamikontrol.Motor.Servo.angle:7 of
+msgid "Callback function when motor has been stopped. Defaults to ``None``."
+msgstr "모터가 멈추었을 때 실행할 콜백 함수. 기본값 ``None``."
+
+#: dynamikontrol.Motor.Servo.angle:9 of
+msgid "args for callback function. Defaults to ``()``."
+msgstr "콜백 함수의 args 인자. 기본값 ``()``."
+
+#: dynamikontrol.Motor.Servo.angle:11 of
+msgid "kwargs for callback function. Defaults to ``{}``."
+msgstr "콜백 함수의 kwargs 인자. 기본값 ``{}``."
+
 #: dynamikontrol.Motor.Servo.get_offset:1 of
 msgid "Get offset of the motor."
 msgstr "모터의 오프셋 각도를 가져온다."
@@ -211,7 +223,9 @@ msgstr "모터의 오프셋, 단위 도."
 msgid ""
 "Set offset of the motor. If the motor angle is inclined slightly even "
 "angle set to 0, you can adjust offset of the motor manually."
-msgstr "모터의 오프셋 각도를 조절한다. 만약 모터의 각도를 0으로 설정했는데도 불구하고 모터의 각도가 어느 한 쪽으로 기울어져 있으면 수동으로 오프셋 각도를 조절할 수 있다."
+msgstr ""
+"모터의 오프셋 각도를 조절한다. 만약 모터의 각도를 0으로 설정했는데도 불구하고 모터의 각도가 어느 한 쪽으로 기울어져 있으면 "
+"수동으로 오프셋 각도를 조절할 수 있다."
 
 #: dynamikontrol.Motor.Servo.set_offset:3 of
 msgid "Offset of the motor in degree. e.g) 17.5"

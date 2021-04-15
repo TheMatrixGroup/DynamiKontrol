@@ -18,7 +18,10 @@ class Servo(object):
             module.motor.angle(45)
             time.sleep(2)
 
-            module.motor.angle(-45)
+            def cb(string):
+                print(string)
+
+            module.motor.angle(-45, func=cb, args=('hello',)) # print 'hello' when motor stopped at -45 degree.
             time.sleep(2)
 
         module.disconnect()
@@ -46,6 +49,9 @@ class Servo(object):
         Args:
             angle (int): If ``angle > 0`` moves along clockwise, otherwise moves along counter clockwise. ``angle`` must be between ``-85`` to ``85`` in degrees.
             period (uint): Control period. ``period`` must be between ``0`` to ``65535`` in millisecond. Defaults to ``None``.
+            func (function): Callback function when motor has been stopped. Defaults to ``None``.
+            args (tuple): args for callback function. Defaults to ``()``.
+            kwargs (dict): kwargs for callback function. Defaults to ``{}``.
         """
         direction = 0x00 if angle >= 0 else 0x01
         angle_hex = abs(angle)
