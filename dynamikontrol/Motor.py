@@ -34,11 +34,13 @@ class Servo(object):
             'angle': 0x00,
             'angle_period': 0x01,
             'set_offset': 0x02,
+            'angle_seq': 0x40,
+            'angle_period_seq': 0x41,
             'get_offset': 0x81
         }
 
 
-    def angle(self, angle, period=None):
+    def angle(self, angle, period=None, func=None, args=(), kwargs={}):
         """Control the angle of motor.
 
         Args:
@@ -48,16 +50,31 @@ class Servo(object):
         direction = 0x00 if angle >= 0 else 0x01
         angle_hex = abs(angle)
 
-        if period is None:
-            data = self.m.p2m.set_type(self.type).set_command(self.command['angle']).set_data([direction, angle_hex]).encode()
+        if func is None:
+            if period is None:
+                data = self.m.p2m.set_type(self.type).set_command(self.command['angle']).set_data([direction, angle_hex]).encode()
+            else:
+                if period < 0 or period > 65535:
+                    raise ValueError('Motor period value must be between 0 to 65535 in millisecond.')
+
+                period_h = (period >> 8) & 0xff
+                period_l = period & 0xff
+
+                data = self.m.p2m.set_type(self.type).set_command(self.command['angle_period']).set_data([direction, angle_hex, period_h, period_l]).encode()
         else:
-            if period < 0 or period > 65535:
-                raise ValueError('Motor period value must be between 0 to 65535 in millisecond.')
+            if period is None:
+                data = self.m.p2m.set_type(self.type).set_command(self.command['angle_seq']).set_data([direction, angle_hex, 0x00, 0x00, 0x00, 0x00, 0x00]).encode()
+            else:
+                if period < 0 or period > 65535:
+                    raise ValueError('Motor period value must be between 0 to 65535 in millisecond.')
 
-            period_h = (period >> 8) & 0xff
-            period_l = period & 0xff
+                period_h = (period >> 8) & 0xff
+                period_l = period & 0xff
 
-            data = self.m.p2m.set_type(self.type).set_command(self.command['angle_period']).set_data([direction, angle_hex, period_h, period_l]).encode()
+                data = self.m.p2m.set_type(self.type).set_command(self.command['angle_period_seq']).set_data([direction, angle_hex, period_h, period_l, 0x00, 0x00, 0x00, 0x00, 0x00]).encode()
+
+            self.m._add_motor_cb_func(func, args, kwargs)
+
         self.m.send(data)
 
 

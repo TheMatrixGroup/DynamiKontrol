@@ -62,6 +62,10 @@ class Module(object):
         self.manual_delay = 0.1
         self.data_queue = bytearray()
 
+        self.motor_cb_func = None
+        self.motor_cb_args = ()
+        self.motor_cb_kwargs = {}
+
         self.is_connected = False
 
         ports = list_ports.comports(include_links=True)
@@ -163,7 +167,7 @@ class Module(object):
                     if not header:
                         continue
 
-                    if not self.__is_header_defined and (header == 0x06 or header == 0x15): # 0x06 ACK, 0x15 NACK
+                    if not self.__is_header_defined and (header == 0x06 or header == 0x15 or header == 0x16): # 0x06 ACK, 0x15 NACK, 0x16 SEQ
                         self.__is_header_defined = True
                         self.data_queue = bytearray()
 
@@ -195,6 +199,9 @@ class Module(object):
 
                     # command, data = self.m2p.decode(self.data_queue)
 
+                    if header == 0x16 and self.motor_cb_func is not None:
+                        self.motor_cb_func(*self.motor_cb_args, **self.motor_cb_kwargs)
+
                     if self.debug:
                         print('[*] Recv %s' % (print_bytearray(self.data_queue),))
                 except Exception as e:
@@ -204,6 +211,12 @@ class Module(object):
 
         self.is_connected = False
         self.__stop_thread = False
+
+
+    def _add_motor_cb_func(self, func, args=(), kwargs={}):
+        self.motor_cb_func = func
+        self.motor_cb_args = args
+        self.motor_cb_kwargs = kwargs
 
 
     def _manual_send_receive(self, send_data, receive_data_len):
@@ -226,6 +239,9 @@ class Module(object):
 
         for i in range(receive_data_len):
             received_data.append(self.__read_delay())
+
+        if self.debug:
+            print('[*] Recv %s' % (print_bytearray(received_data),))
 
         command, received_data = self.m2p.decode(received_data)
 
