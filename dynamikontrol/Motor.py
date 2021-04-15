@@ -48,7 +48,7 @@ class Servo(object):
 
         Args:
             angle (int): If ``angle > 0`` moves along clockwise, otherwise moves along counter clockwise. ``angle`` must be between ``-85`` to ``85`` in degrees.
-            period (uint): Control period. ``period`` must be between ``0`` to ``65535`` in millisecond. Defaults to ``None``.
+            period (float): Control period. ``period`` must be between ``0.0`` to ``65.0`` in second. Defaults to ``None``.
             func (function): Callback function when motor has been stopped. Defaults to ``None``.
             args (tuple): args for callback function. Defaults to ``()``.
             kwargs (dict): kwargs for callback function. Defaults to ``{}``.
@@ -60,8 +60,10 @@ class Servo(object):
             if period is None:
                 data = self.m.p2m.set_type(self.type).set_command(self.command['angle']).set_data([direction, angle_hex]).encode()
             else:
-                if period < 0 or period > 65535:
-                    raise ValueError('Motor period value must be between 0 to 65535 in millisecond.')
+                if period < 0 or period > 65:
+                    raise ValueError('Motor period value must be between 0.0 to 65.0 in second.')
+
+                period = int(period * 1000)
 
                 period_h = (period >> 8) & 0xff
                 period_l = period & 0xff
@@ -71,8 +73,10 @@ class Servo(object):
             if period is None:
                 data = self.m.p2m.set_type(self.type).set_command(self.command['angle_seq']).set_data([direction, angle_hex, 0x00, 0x00, 0x00, 0x00, 0x00]).encode()
             else:
-                if period < 0 or period > 65535:
-                    raise ValueError('Motor period value must be between 0 to 65535 in millisecond.')
+                if period < 0 or period > 65:
+                    raise ValueError('Motor period value must be between 0.0 to 65.0 in second.')
+
+                period = int(period * 1000)
 
                 period_h = (period >> 8) & 0xff
                 period_l = period & 0xff
