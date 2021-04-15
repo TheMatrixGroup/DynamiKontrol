@@ -109,19 +109,22 @@ class LED(object):
             self.__send('g', 'toggle')
 
 
-    def blink(self, color='all', on_delay=256, off_delay=256):
+    def blink(self, color='all', on_delay=0.256, off_delay=0.256):
         """Blink the LED light periodically.
 
         Args:
             color (str, optional): Color of the LED light. ``r``, ``y`` or ``g``. Defaults to ``all``.
-            on_delay (int, optional): Delay time for turned-on status. ``on_delay`` must be between ``0`` to ``65535`` in millisecond. Defaults to ``256``.
-            off_delay (int, optional): Delay time for turned-off status. ``off_delay`` must be between ``0`` to ``65535`` in millisecond. Defaults to ``256``.
+            on_delay (int, optional): Delay time for turned-on status. ``on_delay`` must be between ``0.0`` to ``65.0`` in second. Defaults to ``0.256``.
+            off_delay (int, optional): Delay time for turned-off status. ``off_delay`` must be between ``0.0`` to ``65.0`` in second. Defaults to ``0.256``.
         """
         if color not in ['r', 'g', 'y', 'all']:
             raise ValueError('LED light color must be one of "r", "y", "g" and "all".')
 
-        if on_delay < 0 or on_delay > 65535 or off_delay < 0 or off_delay > 65535:
-            raise ValueError('LED on_delay or off_delay value must be between 0 to 65535 in millisecond.')
+        if on_delay < 0 or on_delay > 65 or off_delay < 0 or off_delay > 65:
+            raise ValueError('LED on_delay or off_delay value must be between 0.0 to 65.0 in second.')
+
+        on_delay = int(on_delay * 1000)
+        off_delay = int(off_delay * 1000)
 
         if color in ['all', 'r']:
             self.__send('r', 'blink', on_delay, off_delay)

@@ -64,9 +64,9 @@ while True:
     time.sleep(0.1)
 
 # Blink
-module.led.blink(color='r', on_delay=1000, off_delay=100)
-module.led.blink(color='y', on_delay=1000, off_delay=100)
-module.led.blink(color='g', on_delay=1000, off_delay=100)
+module.led.blink(color='r', on_delay=1, off_delay=0.1)
+module.led.blink(color='y', on_delay=1, off_delay=0.1)
+module.led.blink(color='g', on_delay=1, off_delay=0.1)
 time.sleep(3)
 
 module.disconnect()
