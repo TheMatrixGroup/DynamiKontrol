@@ -10,7 +10,7 @@ else:
 
 setuptools.setup(
     name="DynamiKontrol",
-    version="0.1.2",
+    version="0.2.0",
     author="Taehee Lee",
     author_email="kairess87@gmail.com",
     description="DynamiKontrol Python API",
