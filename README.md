@@ -30,8 +30,8 @@ while True:
     module.led.on(color='r')
     time.sleep(2)
 
-    # move 45 degree in counter clockwise during 5000 milliseconds
-    module.motor.angle(angle=-45, period=5000)
+    # move 45 degree in counter clockwise during 5 seconds
+    module.motor.angle(angle=-45, period=5)
     module.led.on(color='g')
     time.sleep(5)
 ```
