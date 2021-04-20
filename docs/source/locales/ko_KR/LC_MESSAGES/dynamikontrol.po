@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DynamiKontrol \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-15 17:17+0900\n"
+"POT-Creation-Date: 2021-04-20 15:23+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,7 +32,7 @@ msgstr ""
 
 #: dynamikontrol.LED.LED:1 dynamikontrol.Module.Module:1
 #: dynamikontrol.Motor.Motor:1 dynamikontrol.Motor.Servo:1
-#: dynamikontrol.Timer.Timer:1 of
+#: dynamikontrol.Switch.Switch:1 dynamikontrol.Timer.Timer:1 of
 msgid "Bases: :class:`object`"
 msgstr ""
 
@@ -44,13 +44,15 @@ msgstr "LED 서브 모듈 클래스."
 #: dynamikontrol.LED.LED.on dynamikontrol.LED.LED.toggle
 #: dynamikontrol.Module.Module dynamikontrol.Module.Module.send
 #: dynamikontrol.Motor.Servo dynamikontrol.Motor.Servo.angle
-#: dynamikontrol.Motor.Servo.set_offset
+#: dynamikontrol.Motor.Servo.set_offset dynamikontrol.Switch.Switch
+#: dynamikontrol.Switch.Switch.off dynamikontrol.Switch.Switch.on
 #: dynamikontrol.Timer.Timer.callback_after
 #: dynamikontrol.Timer.Timer.callback_at of
 msgid "Parameters"
 msgstr ""
 
-#: dynamikontrol.LED.LED:23 dynamikontrol.Motor.Servo:26 of
+#: dynamikontrol.LED.LED:23 dynamikontrol.Motor.Servo:26
+#: dynamikontrol.Switch.Switch:22 of
 msgid "Module object."
 msgstr "Module 객체"
 
@@ -232,6 +234,56 @@ msgid "Offset of the motor in degree. e.g) 17.5"
 msgstr "모터의 오프셋, 단위 도. 예) 17.5"
 
 #: ../../source/dynamikontrol.rst:32
+msgid "dynamikontrol.Switch module"
+msgstr ""
+
+#: dynamikontrol.Switch.Switch:1 of
+msgid "Switch submodule class."
+msgstr "Switch 서브 모듈 클래스."
+
+#: dynamikontrol.Switch.Switch.off:1 of
+msgid "Define callback function when switch is set to ``off`` status."
+msgstr "스위치를 ``off`` 로 설정했을 때 실행할 콜백 함수를 설정한다."
+
+#: dynamikontrol.Switch.Switch.off:3 dynamikontrol.Switch.Switch.on:3
+#: dynamikontrol.Timer.Timer.callback_after:3
+#: dynamikontrol.Timer.Timer.callback_at:3 of
+msgid "Callback function."
+msgstr "콜백 함수."
+
+#: dynamikontrol.Switch.Switch.off:5 dynamikontrol.Switch.Switch.on:5
+#: dynamikontrol.Timer.Timer.callback_after:5
+#: dynamikontrol.Timer.Timer.callback_at:5 of
+msgid "args. Defaults to ``()``."
+msgstr "args 인자. 기본값 ``()``."
+
+#: dynamikontrol.Switch.Switch.off:7 dynamikontrol.Switch.Switch.on:7
+#: dynamikontrol.Timer.Timer.callback_after:7
+#: dynamikontrol.Timer.Timer.callback_at:7 of
+msgid "kwargs. Defaults to ``{}``."
+msgstr "kwargs 인자. 기본값 ``{}``."
+
+#: dynamikontrol.Switch.Switch.off:9 dynamikontrol.Switch.Switch.on:9 of
+msgid "Switch channel number. Must be ``0`` or ``1``. Defaults to ``0``."
+msgstr "스위치의 채널 번호. 반드시 ``0`` 또는 ``1`` 값을 가져야 한다. 기본값 ``0``."
+
+#: dynamikontrol.Switch.Switch.on:1 of
+msgid "Define callback function when switch is set to ``on`` status."
+msgstr "스위치를 ``on`` 으로 설정했을 때 실행할 콜백 함수를 설정한다."
+
+#: dynamikontrol.Switch.Switch.press:1 of
+msgid ""
+"Define callback function when switch is pressed. Exactly same as ``on`` "
+"method."
+msgstr "스위치를 눌렀을 때 실행할 콜백 함수를 설정한다. ``on`` 메소드와 같다."
+
+#: dynamikontrol.Switch.Switch.release:1 of
+msgid ""
+"Define callback function when switch is released. Exactly same as ``off``"
+" method."
+msgstr "스위치를 눌렀다가 떼었을 때 실행할 콜백 함수를 설정한다. ``off`` 메소드와 같다."
+
+#: ../../source/dynamikontrol.rst:40
 msgid "dynamikontrol.Timer module"
 msgstr ""
 
@@ -242,21 +294,6 @@ msgstr "기본 타이머 클래스."
 #: dynamikontrol.Timer.Timer.callback_after:1 of
 msgid "Call the callback function after specific time."
 msgstr "일정 시간 후에 콜백 함수를 호출한다."
-
-#: dynamikontrol.Timer.Timer.callback_after:3
-#: dynamikontrol.Timer.Timer.callback_at:3 of
-msgid "Callback function."
-msgstr "콜백 함수."
-
-#: dynamikontrol.Timer.Timer.callback_after:5
-#: dynamikontrol.Timer.Timer.callback_at:5 of
-msgid "args. Defaults to ``()``."
-msgstr "args 인자. 기본값 ``()``."
-
-#: dynamikontrol.Timer.Timer.callback_after:7
-#: dynamikontrol.Timer.Timer.callback_at:7 of
-msgid "kwargs. Defaults to ``{}``."
-msgstr "kwargs 인자. 기본값 ``{}``."
 
 #: dynamikontrol.Timer.Timer.callback_after:9 of
 msgid "Callback delay time in seconds. Defaults to ``0``."
@@ -281,7 +318,7 @@ msgstr "콜백 시간 datetime 문자열. 예) ``2021-03-04 21:57:30``. 기본�
 msgid "Stop the timer."
 msgstr "타이머를 중지한다."
 
-#: ../../source/dynamikontrol.rst:40
+#: ../../source/dynamikontrol.rst:48
 msgid "Module contents"
 msgstr ""
 

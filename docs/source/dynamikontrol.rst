@@ -28,6 +28,14 @@ dynamikontrol.Motor module
    :undoc-members:
    :show-inheritance:
 
+dynamikontrol.Switch module
+---------------------------
+
+.. automodule:: dynamikontrol.Switch
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 dynamikontrol.Timer module
 --------------------------
 

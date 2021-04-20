@@ -9,6 +9,7 @@ from dynamikontrol.Protocol import Module2PC, PC2Module
 from dynamikontrol.LED import LED
 from dynamikontrol.BaseLED import BaseLED
 from dynamikontrol.Motor import Motor
+from dynamikontrol.Switch import Switch
 from dynamikontrol.helpers.helper import print_bytearray
 
 class Module(object):
@@ -36,6 +37,7 @@ class Module(object):
 
     # communication
     __is_header_defined = False
+    __avail_headers = [0x06, 0x15, 0x16, 0x17] # 0x06 ACK, 0x15 NACK, 0x16 SEQ, 0x17 DC1
 
     def __init__(self, serial_no=None, debug=False):
         self.serial_no = serial_no
@@ -62,9 +64,35 @@ class Module(object):
         self.manual_delay = 0.1
         self.data_queue = bytearray()
 
-        self.motor_cb_func = None
-        self.motor_cb_args = ()
-        self.motor_cb_kwargs = {}
+        self.__motor_cb_func = None
+        self.__motor_cb_args = ()
+        self.__motor_cb_kwargs = {}
+
+        self.__switch_cb_funcs = [{
+            # channel 0
+            'on': {
+                'func': None,
+                'args': (),
+                'kwargs': {}
+            },
+            'off': {
+                'func': None,
+                'args': (),
+                'kwargs': {}
+            }
+        }, {
+            # channel 1
+            'on': {
+                'func': None,
+                'args': (),
+                'kwargs': {}
+            },
+            'off': {
+                'func': None,
+                'args': (),
+                'kwargs': {}
+            }
+        }]
 
         self.is_connected = False
 
@@ -99,6 +127,7 @@ class Module(object):
         self.led = LED(module=self)
         self.base_led = BaseLED(module=self)
         self.motor = Motor(module=self)
+        self.switch = Switch(module=self)
 
 
     def connect(self):
@@ -167,7 +196,7 @@ class Module(object):
                     if not header:
                         continue
 
-                    if not self.__is_header_defined and (header == 0x06 or header == 0x15 or header == 0x16): # 0x06 ACK, 0x15 NACK, 0x16 SEQ
+                    if not self.__is_header_defined and header in self.__avail_headers:
                         self.__is_header_defined = True
                         self.data_queue = bytearray()
 
@@ -195,12 +224,29 @@ class Module(object):
 
                     if end != 0x04:
                         self.__is_header_defined = False
+
+                        if self.debug:
+                            print('[!] Recv %s' % (print_bytearray(self.data_queue),))
+
                         raise ValueError('Module invalid end byte')
 
-                    # command, data = self.m2p.decode(self.data_queue)
+                    command, data = self.m2p.decode(self.data_queue)
 
-                    if header == 0x16 and self.motor_cb_func is not None:
-                        self.motor_cb_func(*self.motor_cb_args, **self.motor_cb_kwargs)
+                    # callbacks
+                    if header == 0x16 and self.__motor_cb_func is not None:
+                        self.__motor_cb_func(*self.__motor_cb_args, **self.__motor_cb_kwargs)
+                    elif header == 0x17:
+                        switch_ch = data[0]
+                        if data[1] == 0:
+                            switch_signal = 'on'
+                        elif data[1] == 1:
+                            switch_signal = 'off'
+
+                        if self.__switch_cb_funcs[switch_ch][switch_signal]['func'] is not None:
+                            self.__switch_cb_funcs[switch_ch][switch_signal]['func'](
+                                *self.__switch_cb_funcs[switch_ch][switch_signal]['args'],
+                                **self.__switch_cb_funcs[switch_ch][switch_signal]['kwargs']
+                            )
 
                     if self.debug:
                         print('[*] Recv %s' % (print_bytearray(self.data_queue),))
@@ -214,9 +260,15 @@ class Module(object):
 
 
     def _add_motor_cb_func(self, func, args=(), kwargs={}):
-        self.motor_cb_func = func
-        self.motor_cb_args = args
-        self.motor_cb_kwargs = kwargs
+        self.__motor_cb_func = func
+        self.__motor_cb_args = args
+        self.__motor_cb_kwargs = kwargs
+
+
+    def _add_switch_cb_func(self, func, args=(), kwargs={}, ch=0, onoff='on'):
+        self.__switch_cb_funcs[ch][onoff]['func'] = func
+        self.__switch_cb_funcs[ch][onoff]['args'] = args
+        self.__switch_cb_funcs[ch][onoff]['kwargs'] = kwargs
 
 
     def _manual_send_receive(self, send_data, receive_data_len):
