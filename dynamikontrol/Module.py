@@ -119,6 +119,7 @@ class Module(object):
             if self.serial_no is not None and self.serial_no != serial_no_str:
                 continue
 
+            self.serial_no = serial_no_str
             self.port = port[0]
             break
 
