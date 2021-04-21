@@ -34,6 +34,7 @@ class Module(object):
     __serial_receive_delay = 0
     __receive_thread_delay = 0.001
     __stop_thread = False
+    _thread_daemon = True
 
     # communication
     __is_header_defined = False
@@ -147,7 +148,7 @@ class Module(object):
 
         self.receive_thread = threading.Thread(target=self.__receive, args=())
         self.receive_thread._event = threading.Event()
-        self.receive_thread.daemon = True
+        self.receive_thread.daemon = self._thread_daemon
         self.receive_thread.start()
         self.receive_thread._event.set()
 
@@ -164,6 +165,14 @@ class Module(object):
         self.__stop_thread = True
         time.sleep(1)
         self.ser.close()
+
+
+    def __enter__(self):
+        return self
+
+
+    def __exit__(self, type, value, traceback):
+        self.disconnect()
 
 
     def __read_delay(self, size=1):
