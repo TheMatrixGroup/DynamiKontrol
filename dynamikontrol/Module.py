@@ -397,3 +397,19 @@ class Module(object):
         self.fw_version = '%s.%s' % (fw_major_version, fw_minor_version)
 
         return self.fw_version
+
+
+    def set_default_switch_operation(self, on):
+        """Set either turn default switch operation on or not. Motor is spinning when switch is pressed by default.
+
+        Args:
+            on (bool): Set default operation on or off.
+        """
+
+        onoff = 0x00
+        if on:
+            onoff = 0x01
+
+        data = self.p2m.set_type(0x00).set_command(0x03).set_data([onoff]).encode()
+
+        self.send(data)

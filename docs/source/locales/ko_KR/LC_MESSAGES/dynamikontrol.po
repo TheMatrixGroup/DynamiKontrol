@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DynamiKontrol \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-20 15:23+0900\n"
+"POT-Creation-Date: 2021-04-22 18:20+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,6 +43,7 @@ msgstr "LED 서브 모듈 클래스."
 #: dynamikontrol.LED.LED dynamikontrol.LED.LED.blink dynamikontrol.LED.LED.off
 #: dynamikontrol.LED.LED.on dynamikontrol.LED.LED.toggle
 #: dynamikontrol.Module.Module dynamikontrol.Module.Module.send
+#: dynamikontrol.Module.Module.set_default_switch_operation
 #: dynamikontrol.Motor.Servo dynamikontrol.Motor.Servo.angle
 #: dynamikontrol.Motor.Servo.set_offset dynamikontrol.Switch.Switch
 #: dynamikontrol.Switch.Switch.off dynamikontrol.Switch.Switch.on
@@ -52,7 +53,7 @@ msgid "Parameters"
 msgstr ""
 
 #: dynamikontrol.LED.LED:23 dynamikontrol.Motor.Servo:26
-#: dynamikontrol.Switch.Switch:22 of
+#: dynamikontrol.Switch.Switch:23 of
 msgid "Module object."
 msgstr "Module 객체"
 
@@ -172,6 +173,16 @@ msgstr "모듈에 데이터를 보낸다."
 #: dynamikontrol.Module.Module.send:3 of
 msgid "Data to send."
 msgstr "전송할 데이터"
+
+#: dynamikontrol.Module.Module.set_default_switch_operation:1 of
+msgid ""
+"Set either turn default switch operation on or not. Motor is spinning "
+"when switch is pressed by default."
+msgstr "스위치 기본 동작을 켜거나 끈다. 기본적으로 스위치를 누르면 모터의 기본 동작을 확인할 수 있다."
+
+#: dynamikontrol.Module.Module.set_default_switch_operation:3 of
+msgid "Set default operation on or off."
+msgstr "기본 동작을 켜거나 끈다."
 
 #: ../../source/dynamikontrol.rst:24
 msgid "dynamikontrol.Motor module"
