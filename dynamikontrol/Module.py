@@ -138,7 +138,7 @@ class Module(object):
         if self.port is None:
             raise IOError('Module is not connected!')
 
-        self.ser = serial.Serial(self.port, self.baud, timeout=0)
+        self.ser = serial.Serial(self.port, self.baud, timeout=0, write_timeout=0)
 
         if self.debug:
             print('[*] Connected to %s, baud rate: %d' % (self.port, self.baud))
