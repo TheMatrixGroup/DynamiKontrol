@@ -68,6 +68,14 @@ while True:
 - Linux
 - Ubuntu
 
+## DynamiKontrol Toolbox
+
+You can test the module before writing the code.
+
+[Download](https://github.com/TheMatrixGroup/DynamiKontrol/releases/tag/0.3.4)
+
+<img src="docs/source/_static/dk_toolbox.png" width="540px">
+
 ## Block-Based Coding
 
 Google's Blockly library makes it easier. Have fun with DynamiKontrol using interlocking blocks. (Support MacOS and Linux only. Windows comming soon)
