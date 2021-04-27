@@ -42,6 +42,7 @@ while True:
 | --- | --- | --- |
 | Face Tracking Camera | [YouTube](https://youtu.be/AhYo2zR0xCU) | [Link](https://dynamikontrol.readthedocs.io/en/latest/face_tracking_camera.html) |
 | A.I. Parking Barrier Gate | <img src="docs/source/_static/ai_parking_barrier_gate.gif" width="270px"> | [Link](https://github.com/kairess/ANPR-with-Yolov4) |
+| Finger Volume Controller | <img src="docs/source/_static/finger_volume_controller.gif" width="270px"> | [Link](https://github.com/TheMatrixGroup/DynamiKontrol/blob/master/examples/finger_volume_controller.py) |
 | Lunch Roulette | ![](docs/source/_static/lunch_roulette.gif) | [Link](https://dynamikontrol.readthedocs.io/en/latest/lunch_roulette.html) |
 | Dial GUI | ![](docs/source/_static/dial_gui.gif) | [Link](https://dynamikontrol.readthedocs.io/en/latest/dial_gui.html) |
 | IoT Thermometer | <img src="docs/source/_static/thermometer.jpg" width="270px"> | [Link](https://dynamikontrol.readthedocs.io/en/latest/thermometer.html) |
