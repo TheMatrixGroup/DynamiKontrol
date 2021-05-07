@@ -1,0 +1,24 @@
+<html>
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <div>
+        <input type="range" id="volume" min="-85" max="85">
+        <label for="volume">Volume <span id="volume-text">0</span></label>
+    </div>
+
+    <script>
+      $(function() {
+        $('#volume').change(function(e) {
+          $('#volume-text').html(this.value)
+
+          $.ajax({
+            method: 'POST',
+            url: '/change',
+            data: { volume: this.value }
+          })
+        });
+      })
+    </script>
+  </body>
+</html>
