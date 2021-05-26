@@ -1,14 +1,22 @@
 # DynamiKontrol
 
+## Plug and Spin It
+
 **If you want to buy this module, please email us matrix.ai.solution@gmail.com**
 
-DynamiKontol is Python API for controlling motors and hardware modules. You can integrate into your Python code such as TensorFlow, PyTorch or OpenCV with hardwares easily.
+DynamiKontol(DK) is Python API for controlling motors and hardware modules. You can integrate into your Python code such as TensorFlow, PyTorch or OpenCV with hardwares easily.
 
 Also you can control multiple DK modules on your PC, Raspberry Pi or NVIDIA Jetson.
 
-<p align="center">
-    <img src="docs/source/_static/dk_module2.png" width="270px">
-</p>
+- Easy USB Interface
+- Easy Python API
+- Block-Based Programming
+- Support All Devices and OS
+
+| Model | Image | Control Method |
+| --- | --- | --- |
+| DK Angle | <img src="docs/source/_static/07.jpg" width="270px"> | Controlling rotation angle (Degree) |
+| DK Speed | <img src="docs/source/_static/DK_Speed_210511.png" width="270px"> | Controlling rotation speed (RPM) |
 
 ## Getting Started
 
