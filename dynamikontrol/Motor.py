@@ -124,6 +124,69 @@ class Servo(object):
         time.sleep(0.1)
 
 
+class BLDC(object):
+    def __init__(self, module):
+        self.m = module
+
+        self.type = 0x04
+        self.command = {
+            'speed': 0x00,
+            'speed_period': 0x01,
+            'stop': 0x10,
+            'speed_seq': 0x40,
+            'speed_period_seq': 0x41,
+            'get_speed': 0x81
+        }
+
+
+    def speed(self, speed, period=None, unit='rpm', func=None, args=(), kwargs={}):
+        direction = 0x00 if speed >= 0 else 0x01
+        speed = abs(int(speed))
+
+        if speed > 65535:
+            raise ValueError('Motor speed value must be between 0 to 65535.')
+
+        speed_h = (speed >> 8) & 0xff
+        speed_l = speed & 0xff
+
+        if func is None:
+            if period is None:
+                data = self.m.p2m.set_type(self.type).set_command(self.command['speed']).set_data([direction, speed_h, speed_l]).encode()
+            else:
+                if period < 0 or period > 65:
+                    raise ValueError('Motor period value must be between 0.0 to 65.0 in second.')
+
+                period = int(period * 1000)
+
+                period_h = (period >> 8) & 0xff
+                period_l = period & 0xff
+
+                data = self.m.p2m.set_type(self.type).set_command(self.command['speed_period']).set_data([direction, speed_h, speed_l, period_h, period_l]).encode()
+        else:
+            if period is None:
+                data = self.m.p2m.set_type(self.type).set_command(self.command['speed_seq']).set_data([direction, speed_h, speed_l, 0x00, 0x00, 0x00, 0x00, 0x00]).encode()
+            else:
+                if period < 0 or period > 65:
+                    raise ValueError('Motor period value must be between 0.0 to 65.0 in second.')
+
+                period = int(period * 1000)
+
+                period_h = (period >> 8) & 0xff
+                period_l = period & 0xff
+
+                data = self.m.p2m.set_type(self.type).set_command(self.command['speed_period_seq']).set_data([direction, speed_h, speed_l, period_h, period_l, 0x00, 0x00, 0x00, 0x00, 0x00]).encode()
+
+            self.m._add_motor_cb_func(func, args, kwargs)
+
+        self.m.send(data)
+
+
+    def stop(self):
+        data = self.m.p2m.set_type(self.type).set_command(self.command['stop']).set_data([]).encode()
+
+        self.m.send(data)
+
+
 class Motor(object):
     def __init__(self, module):
         self.m = module
@@ -131,7 +194,7 @@ class Motor(object):
         if self.m.pid == '0001':
             self.motor = Servo(module=self.m)
         elif self.m.pid == '0002':
-            raise NotImplementedError('Speed motor module is not implemented yet.')
+            self.motor = BLDC(module=self.m)
 
     def angle(self, *args, **kwargs):
         self.motor.angle(*args, **kwargs)
