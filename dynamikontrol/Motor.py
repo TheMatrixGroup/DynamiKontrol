@@ -1,7 +1,8 @@
 import time
+import math
 
 class Servo(object):
-    """Servo motor submodule class.
+    """Servo(Angle) motor submodule class.
 
     .. highlight:: python
     .. code-block:: python
@@ -125,6 +126,25 @@ class Servo(object):
 
 
 class BLDC(object):
+    """BLDC(Speed) motor submodule class.
+
+    .. highlight:: python
+    .. code-block:: python
+
+        from dynamikontrol import Module
+        import time
+
+        module = Module()
+
+        module.motor.speed(1000)
+        time.sleep(5)
+        module.motor.stop()
+
+        module.disconnect()
+
+    Args:
+        module (object): Module object.
+    """
     def __init__(self, module):
         self.m = module
 
@@ -140,11 +160,35 @@ class BLDC(object):
 
 
     def speed(self, speed, period=None, unit='rpm', func=None, args=(), kwargs={}):
+        """Control speed of the motor.
+
+        Args:
+            speed (int): If ``speed > 0`` spins along clockwise, otherwise spins along counter clockwise.
+            period (int, optional): Control period. ``period`` must be between ``0.0`` to ``65.0`` in second. Defaults to ``None``.
+            unit (str, optional): Speed unit must be one of ``rpm``, ``deg/s`` and ``rad/s``. Defaults to ``'rpm'``.
+            func (function, optional): Callback function when motor has been stopped. Defaults to ``None``.
+            args (tuple, optional): args for callback function. Defaults to ``()``.
+            kwargs (dict, optional): kwargs for callback function. Defaults to ``{}``.
+        """
         direction = 0x00 if speed >= 0 else 0x01
-        speed = abs(int(speed))
+        speed = abs(speed)
+
+        unit = unit.lower()
+        # 60 rpm == 360 deg/s == 360 * math.pi / 180 rad/s
+        # 1 rpm == 6 deg/s == math.pi / 30 rad/s
+        if unit == 'rad/s':
+            speed = speed / (math.pi / 30)
+        elif unit == 'deg/s':
+            speed = speed / 6
+        elif unit == 'rpm':
+            pass
+        else:
+            raise ValueError('Motor unit value must be one of rpm, deg/s and rad/s.')
+
+        speed = int(speed)
 
         if speed > 65535:
-            raise ValueError('Motor speed value must be between 0 to 65535.')
+            raise ValueError('Motor speed value must be between 0 to 65535 in RPM.')
 
         speed_h = (speed >> 8) & 0xff
         speed_l = speed & 0xff
@@ -182,9 +226,41 @@ class BLDC(object):
 
 
     def stop(self):
+        """Stop the motor immediately.
+        """
         data = self.m.p2m.set_type(self.type).set_command(self.command['stop']).set_data([]).encode()
 
         self.m.send(data)
+
+
+    def get_speed(self, unit='rpm'):
+        """Get speed of the motor.
+
+        Args:
+            unit (str, optional): Speed unit must be one of ``rpm``, ``deg/s`` and ``rad/s``. Defaults to ``'rpm'``.
+
+        Returns:
+            int: Speed of the motor in specific unit.
+        """
+        data = self.m.p2m.set_type(self.type).set_command(self.command['get_speed']).set_data([]).encode()
+
+        command, received_data = self.m._manual_send_receive(data, 3 + 6)
+
+        direction = 1 if received_data[0] == 0 else -1
+        speed = (received_data[1] << 8) | received_data[2]
+
+        # 60 rpm == 360 deg/s == 360 * math.pi / 180 rad/s
+        # 1 rpm == 6 deg/s == math.pi / 30 rad/s
+        if unit == 'rad/s':
+            speed = speed * (math.pi / 30)
+        elif unit == 'deg/s':
+            speed = speed * 6
+        elif unit == 'rpm':
+            pass
+        else:
+            raise ValueError('Motor unit value must be one of rpm, deg/s and rad/s.')
+
+        return int(direction * speed)
 
 
 class Motor(object):
