@@ -273,19 +273,31 @@ class Motor(object):
             self.motor = BLDC(module=self.m)
 
     def angle(self, *args, **kwargs):
+        if self.m.pid != '0001':
+            raise TypeError('angle() function is supported for DynamiKontrol Angle model only.')
         self.motor.angle(*args, **kwargs)
 
     def get_offset(self, *args, **kwargs):
+        if self.m.pid != '0001':
+            raise TypeError('get_offset() function is supported for DynamiKontrol Angle model only.')
         return self.motor.get_offset(*args, **kwargs)
 
     def set_offset(self, *args, **kwargs):
+        if self.m.pid != '0001':
+            raise TypeError('set_offset() function is supported for DynamiKontrol Angle model only.')
         self.motor.set_offset(*args, **kwargs)
 
     def speed(self, *args, **kwargs):
+        if self.m.pid != '0002':
+            raise TypeError('speed() function is supported for DynamiKontrol Speed model only.')
         self.motor.speed(*args, **kwargs)
 
     def stop(self, *args, **kwargs):
+        if self.m.pid != '0002':
+            raise TypeError('speed() function is supported for DynamiKontrol Speed model only.')
         self.motor.stop(*args, **kwargs)
 
     def get_speed(self, *args, **kwargs):
-        self.motor.get_speed(*args, **kwargs)
+        if self.m.pid != '0002':
+            raise TypeError('speed() function is supported for DynamiKontrol Speed model only.')
+        return self.motor.get_speed(*args, **kwargs)
