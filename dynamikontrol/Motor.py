@@ -280,3 +280,12 @@ class Motor(object):
 
     def set_offset(self, *args, **kwargs):
         self.motor.set_offset(*args, **kwargs)
+
+    def speed(self, *args, **kwargs):
+        self.motor.speed(*args, **kwargs)
+
+    def stop(self, *args, **kwargs):
+        self.motor.stop(*args, **kwargs)
+
+    def get_speed(self, *args, **kwargs):
+        self.motor.get_speed(*args, **kwargs)
