@@ -294,6 +294,7 @@ class Module(object):
         if hasattr(self, 'receive_thread'):
             self.receive_thread._event.clear() # pause receive thread
 
+        time.sleep(self.manual_delay)
         self.send(send_data)
         time.sleep(self.manual_delay)
 
