@@ -80,7 +80,7 @@ while True:
 
 You can test the module before writing the code.
 
-[Download](https://github.com/TheMatrixGroup/DynamiKontrol/releases/tag/0.3.4)
+[Download](https://github.com/TheMatrixGroup/DynamiKontrol/releases/tag/0.4.0)
 
 <img src="docs/source/_static/dk_toolbox.png" width="540px">
 
