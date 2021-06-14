@@ -159,6 +159,7 @@ class Module(object):
     def disconnect(self):
         """Close the connection of the module. Must include ``module.disconnect()`` at the end of the code so that module can close connection properly.
         """
+        self.send(self.p2m.set_type(0x00).set_command(0x10).set_data([]).encode()) # disconnect
         time.sleep(1)
         if self.debug:
             print('[*] Disconnecting...')

@@ -1,5 +1,6 @@
 import time
 import math
+import warnings
 
 class Servo(object):
     """Servo(Angle) motor submodule class.
@@ -186,6 +187,9 @@ class BLDC(object):
             raise ValueError('Motor unit value must be one of rpm, deg/s and rad/s.')
 
         speed = int(speed)
+
+        if speed < 50:
+            warnings.warn('Motor is not working properly when speed is less than 50 RPM.')
 
         if speed > 65535:
             raise ValueError('Motor speed value must be between 0 to 65535 in RPM.')
