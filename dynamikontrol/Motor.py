@@ -237,34 +237,39 @@ class BLDC(object):
         self.m.send(data)
 
 
-    def get_speed(self, unit='rpm'):
-        """Get speed of the motor.
+    def get_speed(self, func, unit='rpm'):
+        """Get speed of the motor asynchronously.
+
+        .. highlight:: python
+        .. code-block:: python
+
+            from dynamikontrol import Module
+            import time
+
+            module = Module()
+
+            module.motor.speed(4000, period=10)
+
+            def get_speed_cb(speed):
+                print('Current Speed', speed)
+
+            for i in range(60):
+                time.sleep(0.5)
+                module.motor.get_speed(func=get_speed_cb)
+
+            module.disconnect()
 
         Args:
+            func (function): Callback function when getting speed from the motor.
             unit (str, optional): Speed unit must be one of ``rpm``, ``deg/s`` and ``rad/s``. Defaults to ``'rpm'``.
-
-        Returns:
-            int: Speed of the motor in specific unit.
         """
         data = self.m.p2m.set_type(self.type).set_command(self.command['get_speed']).set_data([]).encode()
+        self.m.send(data)
 
-        command, received_data = self.m._manual_send_receive(data, 3 + 6)
-
-        direction = 1 if received_data[0] == 0 else -1
-        speed = (received_data[1] << 8) | received_data[2]
-
-        # 60 rpm == 360 deg/s == 360 * math.pi / 180 rad/s
-        # 1 rpm == 6 deg/s == math.pi / 30 rad/s
-        if unit == 'rad/s':
-            speed = speed * (math.pi / 30)
-        elif unit == 'deg/s':
-            speed = speed * 6
-        elif unit == 'rpm':
-            pass
-        else:
+        if unit not in ['rad/s', 'deg/s', 'rpm']:
             raise ValueError('Motor unit value must be one of rpm, deg/s and rad/s.')
 
-        return int(direction * speed)
+        self.m._add_get_speed_cb_func(func=func, unit=unit)
 
 
 class Motor(object):
@@ -304,4 +309,4 @@ class Motor(object):
     def get_speed(self, *args, **kwargs):
         if self.m.pid != '0002':
             raise TypeError('speed() function is supported for DynamiKontrol Speed model only.')
-        return self.motor.get_speed(*args, **kwargs)
+        self.motor.get_speed(*args, **kwargs)
