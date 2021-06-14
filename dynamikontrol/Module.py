@@ -4,6 +4,7 @@ from serial.tools import list_ports
 import threading
 import time
 import datetime
+import math
 
 from dynamikontrol.Protocol import Module2PC, PC2Module
 from dynamikontrol.LED import LED
@@ -94,6 +95,9 @@ class Module(object):
                 'kwargs': {}
             }
         }]
+
+        self.__get_speed_cb_func = None
+        self.__get_speed_unit = None
 
         self.is_connected = False
 
@@ -246,6 +250,7 @@ class Module(object):
                     # callbacks
                     if header == 0x16 and self.__motor_cb_func is not None:
                         self.__motor_cb_func(*self.__motor_cb_args, **self.__motor_cb_kwargs)
+                    # switch callback
                     elif header == 0x17:
                         switch_ch = data[0]
                         if data[1] == 0:
@@ -258,6 +263,23 @@ class Module(object):
                                 *self.__switch_cb_funcs[switch_ch][switch_signal]['args'],
                                 **self.__switch_cb_funcs[switch_ch][switch_signal]['kwargs']
                             )
+                    # get speed callback
+                    elif header == 0x06 and self.data_queue[1] == 0x04 and self.data_queue[2] == 0x81:
+                        direction = 1 if self.data_queue[4] == 0 else -1
+                        speed = (self.data_queue[5] << 8) | self.data_queue[6]
+
+                        # 60 rpm == 360 deg/s == 360 * math.pi / 180 rad/s
+                        # 1 rpm == 6 deg/s == math.pi / 30 rad/s
+                        if self.__get_speed_unit == 'rad/s':
+                            speed = speed * (math.pi / 30)
+                        elif self.__get_speed_unit == 'deg/s':
+                            speed = speed * 6
+                        elif self.__get_speed_unit == 'rpm':
+                            pass
+                        else:
+                            raise ValueError('Motor unit value must be one of rpm, deg/s and rad/s.')
+
+                        self.__get_speed_cb_func(int(direction * speed))
 
                     if self.debug:
                         print('[*] Recv %s' % (print_bytearray(self.data_queue),))
@@ -274,6 +296,11 @@ class Module(object):
         self.__motor_cb_func = func
         self.__motor_cb_args = args
         self.__motor_cb_kwargs = kwargs
+
+
+    def _add_get_speed_cb_func(self, func, unit):
+        self.__get_speed_cb_func = func
+        self.__get_speed_unit = unit
 
 
     def _add_switch_cb_func(self, func, args=(), kwargs={}, ch=0, onoff='on'):
