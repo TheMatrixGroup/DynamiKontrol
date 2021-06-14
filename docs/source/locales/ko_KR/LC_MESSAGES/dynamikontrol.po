@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DynamiKontrol \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-02 12:27+0900\n"
+"POT-Creation-Date: 2021-06-14 18:35+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -130,8 +130,7 @@ msgstr "연결된 모듈의 기기 펌웨어 버전을 가져온다."
 
 #: dynamikontrol.Module.Module.get_fw_version
 #: dynamikontrol.Module.Module.get_id dynamikontrol.Module.Module.get_serial_no
-#: dynamikontrol.Module.Module.get_time dynamikontrol.Motor.BLDC.get_speed
-#: dynamikontrol.Motor.Servo.get_offset of
+#: dynamikontrol.Module.Module.get_time dynamikontrol.Motor.Servo.get_offset of
 msgid "Returns"
 msgstr ""
 
@@ -141,8 +140,7 @@ msgstr "모듈의 펌웨어 버전."
 
 #: dynamikontrol.Module.Module.get_fw_version
 #: dynamikontrol.Module.Module.get_id dynamikontrol.Module.Module.get_serial_no
-#: dynamikontrol.Module.Module.get_time dynamikontrol.Motor.BLDC.get_speed
-#: dynamikontrol.Motor.Servo.get_offset of
+#: dynamikontrol.Module.Module.get_time dynamikontrol.Motor.Servo.get_offset of
 msgid "Return type"
 msgstr ""
 
@@ -197,18 +195,18 @@ msgid "BLDC(Speed) motor submodule class."
 msgstr "BLDC 모터 서브 모듈 클래스"
 
 #: dynamikontrol.Motor.BLDC.get_speed:1 of
-msgid "Get speed of the motor."
-msgstr "모터의 현재 속도를 가져온다."
+msgid "Get speed of the motor asynchronously."
+msgstr "모터의 현재 속도를 비동기로 요청한다."
 
-#: dynamikontrol.Motor.BLDC.get_speed:3 dynamikontrol.Motor.BLDC.speed:7 of
+#: dynamikontrol.Motor.BLDC.get_speed:22 of
+msgid "Callback function when getting speed from the motor."
+msgstr "모터의 속도를 전달받았을 때 실행할 콜백 함수."
+
+#: dynamikontrol.Motor.BLDC.get_speed:24 dynamikontrol.Motor.BLDC.speed:7 of
 msgid ""
 "Speed unit must be one of ``rpm``, ``deg/s`` and ``rad/s``. Defaults to "
 "``'rpm'``."
 msgstr "속도 단위는 ``rpm``, ``deg/s``, ``rad/s`` 중에 하나의 값을 가진다. 기본값 ``'rpm'``."
-
-#: dynamikontrol.Motor.BLDC.get_speed:6 of
-msgid "Speed of the motor in specific unit."
-msgstr "모터의 속도."
 
 #: dynamikontrol.Motor.BLDC.speed:1 of
 msgid "Control speed of the motor."
@@ -218,8 +216,7 @@ msgstr "모터의 속도를 조절한다."
 msgid ""
 "If ``speed > 0`` spins along clockwise, otherwise spins along counter "
 "clockwise."
-msgstr ""
-"만약 ``speed > 0`` 이면 시계방향으로 회전하고, ``speed < 0`` 이면 반시계방향으로 회전한다."
+msgstr "만약 ``speed > 0`` 이면 시계방향으로 회전하고, ``speed < 0`` 이면 반시계방향으로 회전한다."
 
 #: dynamikontrol.Motor.BLDC.speed:5 dynamikontrol.Motor.Servo.angle:5 of
 msgid ""
@@ -395,4 +392,7 @@ msgstr ""
 
 #~ msgid "Data from the module."
 #~ msgstr "모듈로부터 수신한 데이터"
+
+#~ msgid "Speed of the motor in specific unit."
+#~ msgstr "모터의 속도."
 
