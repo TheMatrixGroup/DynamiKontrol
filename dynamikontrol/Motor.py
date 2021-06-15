@@ -56,7 +56,7 @@ class Servo(object):
             kwargs (dict, optional): kwargs for callback function. Defaults to ``{}``.
         """
         direction = 0x00 if angle >= 0 else 0x01
-        angle_hex = abs(angle)
+        angle_hex = min(abs(angle), 255)
 
         if func is None:
             if period is None:
