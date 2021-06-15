@@ -5,6 +5,7 @@ import threading
 import time
 import datetime
 import math
+import warnings
 
 from dynamikontrol.Protocol import Module2PC, PC2Module
 from dynamikontrol.LED import LED
@@ -281,6 +282,10 @@ class Module(object):
 
                         self.__get_speed_cb_func(int(direction * speed))
 
+                    # error
+                    if header == 0x15:
+                        self.__handle_error(self.data_queue)
+
                     if self.debug:
                         print('[*] Recv %s' % (print_bytearray(self.data_queue),))
                 except Exception as e:
@@ -290,6 +295,33 @@ class Module(object):
 
         self.is_connected = False
         self.__stop_thread = False
+
+
+    def __handle_error(self, data):
+        code = data[4]
+
+        if code == 0x00:
+            warnings.warn('Firmware: Invaild checksum.')
+        elif code == 0x01:
+            warnings.warn('Firmware: Invaild end byte.')
+        elif code == 0x02:
+            warnings.warn('Firmware: Failed to set device ID.')
+        elif code == 0x03:
+            warnings.warn('Firmware: Command is not defined in protocol.')
+        elif code == 0x04:
+            warnings.warn('Firmware: Type is not defined in protocol.')
+        elif code == 0x80:
+            warnings.warn('Firmware: Servo motor fault.')
+        elif code == 0x81:
+            warnings.warn('Firmware: Out of range servo motor control period.')
+        elif code == 0x82:
+            warnings.warn('Firmware: Over torque servo motor.')
+        elif code == 0xA0:
+            warnings.warn('Firmware: Power is not supplied to BLDC motor.')
+        elif code == 0xA1:
+            warnings.warn('Firmware: Over current.')
+        elif code == 0xA2:
+            warnings.warn('Firmware: Over temperature.')
 
 
     def _add_motor_cb_func(self, func, args=(), kwargs={}):

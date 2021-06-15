@@ -188,8 +188,8 @@ class BLDC(object):
 
         speed = int(speed)
 
-        if speed < 50:
-            warnings.warn('Motor is not working properly when speed is less than 50 RPM.')
+        if 0 < speed < 50:
+            warnings.warn('Motor is not working properly when absolute value of speed is less than 50 RPM.')
 
         if speed > 65535:
             raise ValueError('Motor speed value must be between 0 to 65535 in RPM.')
