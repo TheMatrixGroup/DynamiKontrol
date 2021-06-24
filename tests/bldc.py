@@ -14,7 +14,7 @@ module.motor.speed(4000, period=10, func=func)
 for i in range(10):
     time.sleep(1)
     print(time.time(), i+1)
-    print(module.motor.get_speed())
+    module.motor.get_speed(print)
 
 print('stop')
 
