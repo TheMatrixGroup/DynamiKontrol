@@ -16,7 +16,7 @@ Also you can control multiple DK modules on your PC, Raspberry Pi or NVIDIA Jets
 | Model | Image | Control Method |
 | --- | --- | --- |
 | DK Angle | <img src="docs/source/_static/07.jpg" width="270px"> | Controlling rotation angle (Degree) |
-| DK Speed | <img src="docs/source/_static/DK_Speed_210511.png" width="270px"> | Controlling rotation speed (RPM) |
+| DK Speed | <img src="docs/source/_static/speed_01.jpg" width="270px"> | Controlling rotation speed (RPM) |
 
 ## Getting Started
 
